@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ph %}
+{% block title %}FAQ · ARD LINE{% endblock %}
+{% block content %}
+<section class="sec narrow faq">
+  <span class="eyebrow">Aide</span>
+  <h1 class="h-l">Questions fréquentes</h1>
+  <label class="field search"><small>Rechercher une question</small><input id="faq-search" type="search" placeholder="Livraison, paiement…"></label>
+  {% for cat, qs in [("Commande", ["Comment passer commande ?", "Puis-je commander sur WhatsApp ?"]), ("Livraison", ["Dans quelles villes livrez-vous ?", "Quels sont les délais ?"]), ("Paiement", ["Quels moyens de paiement acceptez-vous ?"]), ("Parfums", ["Qu'est-ce qu'un extrait de parfum ?", "Combien de temps tient le parfum ?"]), ("Retours", ["Puis-je retourner un parfum ?"])] %}
+  <h2 class="h-s faq-cat">{{ cat }}</h2>
+  {% for q in qs %}<details class="acc faq-item"><summary>{{ q }}</summary><p class="ph-block">Réponse à rédiger par la marque.</p></details>{% endfor %}
+  {% endfor %}
+  <div class="note-box">Pas de réponse ? <a href="{{ url_for('contact') }}">Écrivez-nous sur WhatsApp</a></div>
+</section>
+{% endblock %}

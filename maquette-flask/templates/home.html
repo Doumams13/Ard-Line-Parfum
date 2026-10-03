@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ph, tag, anno, val, icon, card %}
+{% block content %}
+
+{# 1 · Hero #}
+<section class="hero">
+  <picture>
+    <source media="(max-width: 760px)" srcset="{{ url_for('static', filename='images/nature-le-ntem.jpg') }}">
+    <img class="hero-img" src="{{ url_for('static', filename='images/nature-mingoue.jpg') }}" alt="Le flacon Mingoué posé dans un torrent">
+  </picture>
+  <div class="hero-in reveal">
+    <span class="eyebrow">Collection privée</span>
+    <h1 class="hero-title">ARD LINE</h1>
+    <p class="hero-sub ph-block">Des fragrances nées de l'eau vive et de la pierre.</p>
+    <div class="ctas">
+      <a class="btn light" href="{{ url_for('collection') }}">Découvrir la collection</a>
+      <a class="btn ghost-light" href="#collection">Explorer les parfums</a>
+    </div>
+  </div>
+  <p class="hero-credit only-d"><i></i>Sur l'image : Mingoué, extrait de parfum 35 ml</p>
+  {% call anno("Hero") %}Photo paysage sur desktop (Mingoué), photo portrait dédiée sur mobile (Le Ntem). Léger zoom lent à l'arrivée. L'accroche est provisoire : le slogan n'est pas choisi.{% endcall %}
+</section>
+
+{# 2 · Essence #}
+<section class="sec essence">
+  <div class="essence-tx reveal">
+    <span class="eyebrow">La Maison</span>
+    <h2 class="h-l">L'essence <em>ARD LINE</em></h2>
+    <div class="rule short"></div>
+    <p class="ph-block">ARD LINE tient son nom d'Ardline. Une maison qui compose ses propres extraits de parfum et les photographie là où ils prennent leur sens : au bord de l'eau, sur la pierre, dans la lumière. Texte à remplacer par la présentation officielle de la marque.</p>
+    <span class="sig">Ardline</span>
+    <a class="btn ghost" href="{{ url_for('about') }}">Découvrir notre univers</a>
+  </div>
+  <div class="essence-pics reveal">
+    <img class="a parallax" src="{{ url_for('static', filename='images/nature-la-sebe.jpg') }}" alt="La Sébé au bord de l'eau, entourée de fleurs blanches">
+    <img class="b" src="{{ url_for('static', filename='images/studio-noya-socle.jpg') }}" alt="Noya sur un socle de marbre">
+  </div>
+  {% call anno("Composition") %}Grande photo nature et petite image studio en superposition : les deux registres de la marque dès la deuxième section.{% endcall %}
+</section>
+
+{# 3 · Collection #}
+<section class="sec collection" id="collection">
+  <div class="sec-head">
+    <div>
+      <span class="eyebrow">Six fragrances</span>
+      <h2 class="h-l">La Collection ARD LINE</h2>
+      <p class="muted">Découvrez les fragrances de la Collection Privée.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filtrer par bouchon" data-filter-target="#shelf">
+      <button class="chip on" type="button" data-filter="all">Toutes</button>
+      <button class="chip" type="button" data-filter="noir"><i class="cap noir"></i>Bouchon noir</button>
+      <button class="chip" type="button" data-filter="blanc"><i class="cap"></i>Bouchon blanc</button>
+    </div>
+  </div>
+  <div class="shelf" id="shelf">
+    {% for p in products %}{{ card(p) }}{% endfor %}
+  </div>
+  <div class="shelf-line"></div>
+  <div class="shelf-foot">
+    <span class="muted only-d">Les six flacons partagent la même silhouette : une étagère d'objets de collection, pas une grille de produits.</span>
+    <span class="muted only-m swipe-hint">Glisser pour voir la suite</span>
+    <a class="lnk" href="{{ url_for('collection') }}">Voir toute la collection</a>
+  </div>
+  {% call anno("Survol et mobile") %}Desktop : au survol, le flacon studio laisse place à sa photo nature et l'ajout rapide apparaît. Mobile : carrousel à glisser, une carte et demie visible.{% endcall %}
+</section>
+
+{# 4 · Immersion #}
+<section class="immersion">
+  <img class="parallax" src="{{ url_for('static', filename='images/nature-roche-algues-2.jpg') }}" alt="Flacons posés sur des roches volcaniques au milieu des algues">
+  <div class="immersion-tx reveal">
+    <span class="eyebrow">Immersion</span>
+    <p class="big">Une fragrance.<em>Une émotion.</em></p>
+    <a class="btn light" href="{{ url_for('collection') }}">Explorer les fragrances</a>
+  </div>
+  {% call anno("Rupture") %}Image pleine largeur en parallax lent. Phrase proposée par le brief, conservée comme direction.{% endcall %}
+</section>
+
+{# 5 · Quiz #}
+<section class="sec quiz" id="quiz">
+  <div class="quiz-main">
+    <span class="eyebrow">Votre fragrance</span>
+    <h2 class="h-l">Quelle fragrance vous ressemble ?</h2>
+    <ol class="steps"><li class="on">Vos envies</li><li>Votre moment</li><li>Vos fragrances</li></ol>
+    <p class="q">Choisissez une ou plusieurs envies</p>
+    <div class="profiles" role="group" aria-label="Profils olfactifs">
+      {% for key, label, hint in [("floral","Floral","Pétales, douceur"),("frais","Frais","Agrumes, légèreté"),("intense","Intense","Présence, profondeur"),("aquatique","Aquatique","Eau, minéral"),("sensuel","Sensuel","Chaleur, peau"),("boise","Boisé","Écorce, terre")] %}
+      <button class="pf" type="button" data-profile="{{ key }}" aria-pressed="false"><b>{{ label }}</b><span>{{ hint }}</span></button>
+      {% endfor %}
+    </div>
+    <p class="q">Pour quel moment ?</p>
+    <div class="moments" role="radiogroup" aria-label="Moment">
+      <button class="chip on" type="button" data-moment="Le jour">Le jour</button>
+      <button class="chip" type="button" data-moment="Le soir">Le soir</button>
+      <button class="chip" type="button" data-moment="Les deux">Les deux</button>
+    </div>
+  </div>
+  <aside class="result" id="quiz-result">
+    <div class="result-head"><span class="eyebrow">Votre sélection</span><span class="match" data-quiz-summary>Aucune envie choisie</span></div>
+    <p class="h-m" data-quiz-title>Choisissez vos envies</p>
+    <div data-quiz-list class="res-list"><p class="muted">Vos fragrances apparaîtront ici dès le premier choix.</p></div>
+    {{ tag("Exemple : correspondances parfum / profil à définir par la marque") }}
+  </aside>
+  <div class="quiz-sticky only-m"><a class="btn full" href="#quiz-result" data-quiz-btn>Voir mes fragrances</a></div>
+  {% call anno("Interaction") %}Les résultats se mettent à jour à chaque clic, sans changer de page. Sur mobile, le bouton collant compte les résultats en direct.{% endcall %}
+</section>
+
+{# 6 · Parfum mis en avant (module réutilisable) #}
+{% set f = featured %}
+<section class="feat">
+  <div class="feat-img"><img src="{{ url_for('static', filename=f.nature) }}" alt="{{ f.name }} au bord de la rivière"></div>
+  <div class="feat-tx reveal">
+    <span class="eyebrow">Fragrance à l'honneur</span>
+    <h2 class="feat-name">{{ f.name }}</h2>
+    <p class="caps">{{ f.type }} · {{ f.volume }}</p>
+    {% if f.description %}<p>{{ f.description }}</p>{% else %}<p class="ph-block">Courte description du parfum, deux à trois phrases sur son caractère et le moment où le porter.</p>{% endif %}
+    <details class="acc" open><summary>Notes olfactives</summary>
+      <div class="notes">{% for k, v in f.notes.items() %}<div><span>{{ k }}</span>{{ val(v, "Notes de " ~ k|lower) }}</div>{% endfor %}</div>
+    </details>
+    <div class="facts">
+      <div><small>Famille</small>{{ val(f.family, "À définir") }}</div>
+      <div><small>Tenue</small><span>24 h {{ tag() }}</span></div>
+      <div><small>Bouchon</small>{{ f.cap|capitalize }}</div>
+    </div>
+    <p class="price">{{ val(f.price, "Prix") }}</p>
+    <div class="ctas">
+      <button class="btn" type="button" data-add="{{ f.slug }}">Ajouter au panier</button>
+      <a class="btn ghost" href="{{ url_for('product', slug=f.slug) }}">Voir la fiche</a>
+    </div>
+  </div>
+  {% call anno("Module réutilisable") %}Même gabarit pour n'importe quel parfum : on change le produit dans app.py. Les notes restent vides tant que la marque ne les a pas fournies.{% endcall %}
+</section>
+
+{# 7 · Carnet de source #}
+<section class="sec" id="carnet">
+  <div class="sec-head">
+    <div><span class="eyebrow">Carnet de source</span><h2 class="h-l">Eau, pierre, <em>lumière</em></h2></div>
+    <a class="lnk" href="{{ url_for('about') }}">Suivre l'univers</a>
+  </div>
+  <div class="story">
+    {% for img, word, pos in [("nature-le-ntem","Lumière",""),("nature-mingoue","Eau",""),("nature-roche-algues","Pierre",""),("nature-roll-on-pierre","Matière",""),("nature-aworiwonga","Source","50% 70%"),("nature-cercle-flacons","Parfum","")] %}
+    <figure class="st{{ loop.index }}"><button type="button" class="zoom" data-lightbox="{{ url_for('static', filename='images/' ~ img ~ '.jpg') }}" aria-label="Agrandir : {{ word }}"><img src="{{ url_for('static', filename='images/' ~ img ~ '.jpg') }}" alt="" {% if pos %}style="object-position:{{ pos }}"{% endif %}></button><figcaption>{{ word }}</figcaption></figure>
+    {% endfor %}
+  </div>
+  {% call anno("Galerie") %}Quasiment pas de texte. Clic sur une image : visionneuse plein écran.{% endcall %}
+</section>
+
+{# 8 · Pourquoi ARD LINE #}
+<section class="sec why-sec">
+  <div class="sec-head"><h2 class="h-l">Pourquoi <em>ARD LINE</em> ?</h2>{{ tag("Textes et promesses à valider") }}</div>
+  <div class="why">
+    <div>{{ icon("flacon", "ico big") }}<h4>Extrait de parfum</h4><p>La concentration inscrite sur chaque étiquette de la collection.</p></div>
+    <div>{{ icon("clock", "ico big") }}<h4>Longue tenue</h4>{{ tag("24 h à valider") }}<p>{{ ph("Durée à confirmer avant publication") }}</p></div>
+    <div>{{ icon("cartouche", "ico big") }}<h4>Collection privée</h4><p>Six fragrances signées par la maison.</p></div>
+    <div>{{ icon("drop", "ico big") }}<h4>Qualité</h4><p>{{ ph("Argument qualité à fournir") }}</p></div>
+  </div>
+</section>
+
+{# 9 · Réseaux sociaux #}
+<section class="sec social">
+  <div class="sec-head">
+    <div><span class="eyebrow">Suivez la maison</span><h2 class="h-l">{{ ph("@compte ARD LINE") }}</h2></div>
+    <div class="nets" role="tablist" aria-label="Réseaux">
+      <button class="on" type="button" data-net="all">Tous</button><button type="button" data-net="Instagram">Instagram</button><button type="button" data-net="TikTok">TikTok</button><button type="button" data-net="Facebook">Facebook</button>
+    </div>
+  </div>
+  <div class="sgrid">
+    {% for img, net in [("nature-oua","Instagram"),("nature-le-ntem","TikTok"),("studio-noya-socle","Instagram"),("nature-roche-algues-2","Facebook"),("nature-la-sebe","TikTok"),("nature-cercle-flacons","Instagram")] %}
+    <figure data-net="{{ net }}"><img src="{{ url_for('static', filename='images/' ~ img ~ '.jpg') }}" alt="" loading="lazy">{% if net == "TikTok" %}<span class="play">▶</span>{% endif %}<span class="badge">{{ net }}</span></figure>
+    {% endfor %}
+  </div>
+  {% call anno("Réseaux") %}Les comptes actuels s'appellent « VEDA Parfumerie ». Noms des comptes ARD LINE à confirmer. En production, la grille serait alimentée par les dernières publications.{% endcall %}
+</section>
+
+{# 10 · CTA final #}
+<section class="final">
+  <img src="{{ url_for('static', filename='images/nature-cercle-flacons.jpg') }}" alt="">
+  <div class="final-tx reveal">
+    <span class="eyebrow">Collection privée</span>
+    <h2 class="h-l">Trouvez <em>votre</em> source.</h2>
+    {{ tag("Message provisoire") }}
+    <a class="btn light" href="{{ url_for('collection') }}">Découvrir la collection</a>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" hidden><button class="ib" type="button" data-close="lightbox" aria-label="Fermer">{{ icon("close") }}</button><img alt=""></div>
+{% endblock %}

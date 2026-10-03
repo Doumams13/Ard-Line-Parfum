@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ph, anno %}
+{% block title %}La Maison · ARD LINE{% endblock %}
+{% block content %}
+<section class="page-hero">
+  <img src="{{ url_for('static', filename='images/nature-oua.jpg') }}" alt="Oua sur une pierre dans l'eau claire">
+  <div class="page-hero-tx"><span class="eyebrow">La Maison</span><h1 class="hero-title sm">ARD LINE</h1></div>
+</section>
+<section class="sec narrow prose">
+  <h2 class="h-l">Un prénom, <em>Ardline</em></h2>
+  <p>Le nom ARD LINE vient du prénom Ardline.</p>
+  <p class="ph-block">L'histoire de la maison, sa fondatrice, ce qui l'a menée au parfum. Texte à fournir par la marque.</p>
+  <h2 class="h-m">Le savoir-faire</h2>
+  <p class="ph-block">Comment les fragrances sont composées, choix des matières, fabrication. Texte à fournir.</p>
+</section>
+<section class="sec">
+  <div class="story story--about">
+    {% for img in ["nature-mingoue","nature-roche-algues","nature-la-sebe","nature-roll-on-pierre"] %}<figure><img src="{{ url_for('static', filename='images/' ~ img ~ '.jpg') }}" alt="" loading="lazy"></figure>{% endfor %}
+  </div>
+  <div class="center-cta"><a class="btn" href="{{ url_for('collection') }}">Découvrir la collection</a></div>
+</section>
+{% endblock %}

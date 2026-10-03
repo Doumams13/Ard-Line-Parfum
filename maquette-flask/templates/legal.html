@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ph %}
+{% block title %}{{ title }} · ARD LINE{% endblock %}
+{% block content %}
+<section class="sec legal">
+  <nav class="legal-nav" aria-label="Pages légales">
+    {% for s, label in legal_pages.items() %}<a href="{{ url_for('legal', slug=s) }}" {% if s == slug %}aria-current="page"{% endif %}>{{ label }}</a>{% endfor %}
+  </nav>
+  <article class="prose">
+    <h1 class="h-l">{{ title }}</h1>
+    <p class="muted small">Dernière mise à jour : {{ ph("date") }}</p>
+    {% for n in range(1, 4) %}
+    <h2 class="h-s">Article {{ n }}</h2>
+    <p class="ph-block">Texte juridique à fournir par la marque ou son conseil.</p>
+    {% endfor %}
+  </article>
+</section>
+{% endblock %}

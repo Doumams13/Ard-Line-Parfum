@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ph, tag, icon %}
+{% block title %}Contact · ARD LINE{% endblock %}
+{% block content %}
+<section class="sec narrow contact">
+  <span class="eyebrow">Contact</span>
+  <h1 class="h-l">Nous écrire</h1>
+  <div class="wa-card">
+    {{ icon("chat", "ico big") }}
+    <div><h2 class="h-s">WhatsApp</h2><p class="muted">Le plus rapide pour commander ou être conseillé.</p><p>{{ ph("+000 00 000 00 00") }} <button class="lnk-btn" type="button" data-copy="[numéro WhatsApp]">Copier</button></p></div>
+  </div>
+  <div class="contact-grid">
+    <div><small class="caps">Téléphone</small><p>{{ ph("numéro") }}</p></div>
+    <div><small class="caps">Email</small><p>{{ ph("adresse") }}</p></div>
+    <div><small class="caps">Villes desservies</small><p>Dakar, Libreville, Port-Gentil {{ tag() }}</p></div>
+  </div>
+  <form class="panel-form" onsubmit="event.preventDefault(); ARD.toast('Message simulé : rien n’est envoyé depuis la maquette');">
+    <h2 class="h-m">Formulaire</h2>
+    <label class="field"><small>Nom</small><input id="c-name"></label>
+    <label class="field"><small>Sujet</small><select id="c-subject"><option>Commande</option><option>Livraison</option><option>Conseil parfum</option><option>Autre</option></select></label>
+    <label class="field area"><small>Message</small><textarea id="c-msg" rows="5"></textarea></label>
+    <button class="btn" type="submit">Envoyer</button>
+  </form>
+</section>
+{% endblock %}

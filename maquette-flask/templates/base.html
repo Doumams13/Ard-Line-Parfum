@@ -1,0 +1,104 @@
+{% from "_macros.html" import ph, tag, icon %}<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{% block title %}ARD LINE · Collection privée{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body class="page-{{ page }}">
+
+<div class="proto-bar" role="note">
+  <span>Maquette interactive · ce n'est pas le site final</span>
+  <button type="button" id="toggleAnno" aria-pressed="true">Annotations : affichées</button>
+</div>
+
+<div class="topbar">Livraison à {{ ph("villes à confirmer") }}</div>
+
+<header class="hdr {% if page == 'home' %}hdr--over{% endif %}" id="hdr">
+  <button class="ib only-m" type="button" data-open="menu" aria-label="Ouvrir le menu">{{ icon("menu") }}</button>
+  <nav class="hdr-nav only-d" aria-label="Navigation principale">
+    <a href="{{ url_for('collection') }}" {% if page == 'collection' %}aria-current="page"{% endif %}>Collection</a>
+    <a href="{{ url_for('home') }}#quiz">Votre fragrance</a>
+    <a href="{{ url_for('about') }}" {% if page == 'about' %}aria-current="page"{% endif %}>La Maison</a>
+  </nav>
+  <a class="logo" href="{{ url_for('home') }}">ARD LINE</a>
+  <div class="hdr-act">
+    <a class="ib only-d" href="{{ url_for('collection') }}" aria-label="Rechercher">{{ icon("search") }}</a>
+    <a class="ib only-d" href="{{ url_for('account') }}" aria-label="Mon compte">{{ icon("user") }}</a>
+    <button class="ib cart-btn" type="button" data-open="drawer" aria-label="Ouvrir le panier">{{ icon("bag") }}<span class="only-d">Panier</span><em class="cart-count">0</em></button>
+  </div>
+</header>
+
+<main id="main">{% block content %}{% endblock %}</main>
+
+<footer class="ftr">
+  <div class="ftr-top">
+    <div class="ftr-brand">
+      <a class="logo" href="{{ url_for('home') }}">ARD LINE</a>
+      <p>Collection privée. Extraits de parfum.</p>
+      <form class="news" onsubmit="event.preventDefault(); ARD.toast('Inscription simulée dans la maquette');">
+        <label for="news-email">Recevoir les nouveautés</label>
+        <div><input id="news-email" type="email" placeholder="Votre adresse email"><button type="submit">S'inscrire</button></div>
+      </form>
+    </div>
+    <details class="ftr-col" open><summary>Navigation</summary><ul>
+      <li><a href="{{ url_for('home') }}">Accueil</a></li><li><a href="{{ url_for('collection') }}">Collection</a></li>
+      <li><a href="{{ url_for('about') }}">À propos</a></li><li><a href="{{ url_for('contact') }}">Contact</a></li><li><a href="{{ url_for('faq') }}">FAQ</a></li></ul></details>
+    <details class="ftr-col" open><summary>Service client</summary><ul>
+      <li>WhatsApp {{ ph("numéro") }}</li><li>Téléphone {{ ph("numéro") }}</li><li>Email {{ ph("adresse") }}</li></ul></details>
+    <details class="ftr-col" open><summary>Réseaux</summary><ul>
+      <li>Instagram {{ ph("compte") }}</li><li>TikTok {{ ph("compte") }}</li><li>Facebook {{ ph("compte") }}</li></ul></details>
+    <details class="ftr-col" open><summary>Informations</summary><ul>
+      {% for slug, label in legal_pages.items() %}<li><a href="{{ url_for('legal', slug=slug) }}">{{ label }}</a></li>{% endfor %}</ul></details>
+  </div>
+  <div class="ftr-bot"><span>© ARD LINE {{ ph("année") }}</span><span>Paiement : {{ ph("moyens à confirmer") }}</span></div>
+</footer>
+
+{# Menu mobile plein écran #}
+<div class="menu" id="menu" hidden>
+  <div class="menu-head">
+    <button class="ib" type="button" data-close="menu" aria-label="Fermer le menu">{{ icon("close") }}</button>
+    <span class="logo">ARD LINE</span>
+    <button class="ib" type="button" data-open="drawer" aria-label="Panier">{{ icon("bag") }}</button>
+  </div>
+  <nav class="menu-nav">
+    <a href="{{ url_for('collection') }}">Collection</a>
+    <a href="{{ url_for('home') }}#quiz" data-close="menu">Votre fragrance</a>
+    <a href="{{ url_for('about') }}">La Maison</a>
+    <a class="it gold" href="{{ url_for('home') }}#carnet" data-close="menu">Carnet de source</a>
+  </nav>
+  <div class="menu-thumbs">
+    {% for p in products[:3] %}<a href="{{ url_for('product', slug=p.slug) }}"><img src="{{ url_for('static', filename=p.studio) }}" alt="{{ p.name }}"></a>{% endfor %}
+  </div>
+  <div class="menu-foot">
+    <a href="{{ url_for('account') }}">Mon compte</a><a href="{{ url_for('contact') }}">Contact &amp; WhatsApp</a><a href="{{ url_for('faq') }}">FAQ</a>
+  </div>
+</div>
+
+{# Tiroir panier #}
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" aria-label="Panier" hidden>
+  <div class="drawer-head"><h2>Votre panier <span class="muted cart-count-txt">(0)</span></h2><button class="ib" type="button" data-close="drawer" aria-label="Fermer le panier">{{ icon("close") }}</button></div>
+  <div class="drawer-body" data-cart-list></div>
+  <div class="drawer-foot">
+    <div class="sum"><div><span>Sous-total</span>{{ ph("Montant") }}</div><div><span>Livraison</span><span class="muted">Calculée à l'étape suivante</span></div></div>
+    <a class="btn full" href="{{ url_for('checkout') }}">Commander</a>
+    <a class="wa-link" href="{{ url_for('contact') }}">ou commander sur WhatsApp</a>
+  </div>
+</aside>
+
+<a class="wa-float" href="{{ url_for('contact') }}" aria-label="Commander sur WhatsApp">{{ icon("chat") }}</a>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+  window.ARD_PRODUCTS = {{ products | tojson }};
+  window.ARD_QUIZ = {{ quiz_demo | tojson }};
+  window.ARD_STATIC = "{{ url_for('static', filename='') }}";
+  window.ARD_PRODUCT_URL = "{{ url_for('product', slug='__slug__') }}";
+  window.ARD_COLLECTION_URL = "{{ url_for('collection') }}";
+</script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

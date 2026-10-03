@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ph, tag, anno, val, icon, card %}
+{% block title %}{{ p.name }} · ARD LINE{% endblock %}
+{% block content %}
+<nav class="crumb pad" aria-label="Fil d'Ariane"><a href="{{ url_for('home') }}">Accueil</a> / <a href="{{ url_for('collection') }}">Collection</a> / {{ p.name }}</nav>
+<section class="pdp">
+  <div class="gal">
+    <div class="gal-thumbs" role="tablist" aria-label="Photos">
+      {% for img in [p.nature, p.studio, "images/studio-collection.jpg", "images/nature-roche-algues.jpg"] %}
+      <button type="button" class="{% if loop.first %}on{% endif %}" data-gal="{{ url_for('static', filename=img) }}" aria-label="Photo {{ loop.index }}"><img src="{{ url_for('static', filename=img) }}" alt=""></button>
+      {% endfor %}
+    </div>
+    <div class="gal-main"><img id="galMain" src="{{ url_for('static', filename=p.nature) }}" alt="{{ p.name }}"></div>
+  </div>
+  <div class="buy">
+    <span class="eyebrow">Collection privée</span>
+    <h1 class="pdp-name">{{ p.name }}</h1>
+    <div class="buy-line"><span class="caps">{{ p.type }} · {{ p.volume }}</span><span class="price">{{ val(p.price, "Prix") }}</span></div>
+    <span class="avail"><i class="dot"></i>{{ val(p.availability, "Disponibilité") }}</span>
+    {% if p.description %}<p>{{ p.description }}</p>{% else %}<p class="ph-block">Description du parfum en deux à quatre phrases.</p>{% endif %}
+    <div class="buy-row">
+      <div class="stepper" data-stepper><button type="button" aria-label="Moins">−</button><output>1</output><button type="button" aria-label="Plus">+</button></div>
+      <button class="btn grow" type="button" data-add="{{ p.slug }}" data-qty-from="[data-stepper]">Ajouter au panier</button>
+    </div>
+    <a class="btn ghost full" href="{{ url_for('checkout') }}" data-buy-now="{{ p.slug }}">Acheter maintenant</a>
+    <a class="wa-link" href="{{ url_for('contact') }}">Commander sur WhatsApp</a>
+    <details class="acc" open><summary>Notes olfactives</summary>
+      <div class="notes">
+        <div><span>Famille</span>{{ val(p.family, "Famille olfactive") }}</div>
+        {% for k, v in p.notes.items() %}<div><span>{{ k }}</span>{{ val(v, "Notes de " ~ k|lower) }}</div>{% endfor %}
+      </div>
+    </details>
+    <details class="acc"><summary>Caractéristiques</summary>
+      <div class="chars">
+        <div><small>Concentration</small>{{ p.type }}</div>
+        <div><small>Contenance</small>{{ p.volume }}</div>
+        <div><small>Bouchon</small>{{ p.cap|capitalize }}{% if p.cap == "blanc" %}, bague dorée{% endif %}</div>
+        <div><small>Couleur du jus</small>{{ p.juice }}</div>
+        <div><small>Tenue</small><span>24 h {{ tag() }}</span></div>
+      </div>
+    </details>
+    <div class="reas">
+      <div>{{ icon("truck") }}<b>Livraison</b>{{ ph("délais") }}</div>
+      <div>{{ icon("lock") }}<b>Paiement</b>{{ ph("moyens") }}</div>
+      <div>{{ icon("chat") }}<b>Conseil</b>WhatsApp</div>
+    </div>
+    {% call anno("Hiérarchie") %}Nom, prix et bouton d'achat visibles sans défiler. Sur mobile, une barre d'achat reste collée en bas de l'écran.{% endcall %}
+  </div>
+</section>
+<div class="buybar only-m">
+  <span class="price-sm">{{ val(p.price, "Prix") }}</span>
+  <button class="btn grow" type="button" data-add="{{ p.slug }}">Ajouter au panier</button>
+</div>
+<section class="sec similar">
+  <div class="sec-head"><h2 class="h-m">Vous aimerez aussi</h2><a class="lnk" href="{{ url_for('collection') }}">Toute la collection</a></div>
+  <div class="grid4">{% for s in similar %}{{ card(s, quick=False) }}{% endfor %}</div>
+</section>
+{% endblock %}

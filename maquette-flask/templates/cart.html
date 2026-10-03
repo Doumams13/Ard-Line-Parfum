@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ph, icon %}
+{% block title %}Panier · ARD LINE{% endblock %}
+{% block content %}
+<section class="sec narrow cart-page">
+  <h1 class="h-l">Votre panier</h1>
+  <div class="cart-layout">
+    <div data-cart-list class="cart-list"></div>
+    <aside class="cart-sum">
+      <div class="sum"><div><span>Sous-total</span>{{ ph("Montant") }}</div><div><span>Livraison</span><span class="muted">Étape suivante</span></div><div class="tot"><span>Total</span>{{ ph("Montant") }}</div></div>
+      <div class="note-box">{{ icon("truck") }}<span>Livraison {{ ph("conditions à définir") }}</span></div>
+      <a class="btn full" href="{{ url_for('checkout') }}">Commander</a>
+      <a class="wa-link" href="{{ url_for('contact') }}">ou commander sur WhatsApp</a>
+    </aside>
+  </div>
+</section>
+{% endblock %}

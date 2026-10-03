@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ph, tag %}
+{% block title %}Mon compte · ARD LINE{% endblock %}
+{% block content %}
+<section class="sec narrow account">
+  <h1 class="h-l">Mon compte</h1>
+  <div class="tabs" role="tablist">
+    <button class="on" type="button" role="tab" data-tab="login">Connexion</button>
+    <button type="button" role="tab" data-tab="register">Créer un compte</button>
+    <button type="button" role="tab" data-tab="dash">Aperçu connecté</button>
+  </div>
+  <div data-panel="login" class="panel-form">
+    <label class="field"><small>Email ou téléphone</small><input id="acc-id" placeholder="vous@exemple.com"></label>
+    <label class="field"><small>Mot de passe</small><input id="acc-pw" type="password" placeholder="••••••••"></label>
+    <button class="btn" type="button" data-tab-go="dash">Se connecter</button>
+    <p class="muted small">La commande est possible sans compte. Le compte est proposé après la confirmation.</p>
+  </div>
+  <div data-panel="register" class="panel-form" hidden>
+    <div class="two"><label class="field"><small>Prénom</small><input id="reg-first"></label><label class="field"><small>Nom</small><input id="reg-last"></label></div>
+    <label class="field"><small>Email ou téléphone</small><input id="reg-id"></label>
+    <label class="field"><small>Mot de passe</small><input id="reg-pw" type="password"></label>
+    <button class="btn" type="button" data-tab-go="dash">Créer mon compte</button>
+  </div>
+  <div data-panel="dash" hidden>
+    <div class="dash">
+      <div class="dash-card"><h2 class="h-s">Mes commandes</h2><p class="muted">Commande {{ ph("ARD-0000") }} · {{ ph("date") }}</p><p><span class="status">En préparation</span> {{ tag("Statuts à définir") }}</p></div>
+      <div class="dash-card"><h2 class="h-s">Adresses</h2><p class="muted">Dakar, {{ ph("adresse exemple") }}</p><a class="lnk" href="#">Ajouter une adresse</a></div>
+      <div class="dash-card"><h2 class="h-s">Favoris</h2><div class="fav">{% for p in products[:3] %}<a href="{{ url_for('product', slug=p.slug) }}"><img src="{{ url_for('static', filename=p.studio) }}" alt="{{ p.name }}"></a>{% endfor %}</div></div>
+    </div>
+  </div>
+</section>
+{% endblock %}

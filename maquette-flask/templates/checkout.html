@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ph, tag, anno, icon %}
+{% block title %}Commande · ARD LINE{% endblock %}
+{% block content %}
+<section class="co">
+  <form class="co-main" id="checkout" novalidate>
+    <ol class="dsteps" aria-label="Étapes">
+      <li class="on" data-step-label="1">Informations</li><li data-step-label="2">Livraison</li><li data-step-label="3">Paiement</li>
+    </ol>
+    <div class="msteps only-m" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+
+    <fieldset data-step="1">
+      <legend class="h-m">Vos informations</legend>
+      <div class="two">
+        <label class="field"><small>Prénom</small><input id="co-first" autocomplete="given-name" placeholder="Awa"></label>
+        <label class="field"><small>Nom</small><input id="co-last" autocomplete="family-name" placeholder="Ndiaye"></label>
+      </div>
+      <label class="field"><small>Téléphone (WhatsApp de préférence)</small><input id="co-phone" type="tel" autocomplete="tel" placeholder="+221 ·· ··· ·· ··"></label>
+      <label class="field"><small>Email (facultatif)</small><input id="co-email" type="email" autocomplete="email" placeholder="vous@exemple.com"></label>
+      <p class="muted small">Les noms affichés sont des exemples de saisie.</p>
+      <button class="btn" type="button" data-next="2">Continuer vers la livraison</button>
+    </fieldset>
+
+    <fieldset data-step="2" hidden>
+      <legend class="h-m">Livraison</legend>
+      <p class="q">Ville de livraison {{ tag("Villes et frais à valider") }}</p>
+      {% for city in ["Dakar", "Libreville", "Port-Gentil"] %}
+      <label class="opt"><input type="radio" name="city" value="{{ city }}" {% if loop.first %}checked{% endif %}><span>{{ city }}</span>{{ ph("Frais") }}</label>
+      {% endfor %}
+      <label class="field"><small>Adresse ou quartier</small><input id="co-address" autocomplete="street-address" placeholder="Quartier, rue, point de repère"></label>
+      <label class="field"><small>Instructions pour le livreur (facultatif)</small><input id="co-notes" placeholder="Ex. : appeler en arrivant"></label>
+      <div class="row-btns"><button class="btn ghost" type="button" data-next="1">Retour</button><button class="btn" type="button" data-next="3">Continuer vers le paiement</button></div>
+    </fieldset>
+
+    <fieldset data-step="3" hidden>
+      <legend class="h-m">Paiement</legend>
+      <label class="opt"><input type="radio" name="pay" value="momo" checked><span>Mobile Money<small>Wave, Orange Money, Airtel Money</small></span>{{ tag() }}</label>
+      <label class="opt"><input type="radio" name="pay" value="card"><span>Carte bancaire<small>Visa, Mastercard</small></span>{{ tag() }}</label>
+      <label class="opt"><input type="radio" name="pay" value="cod"><span>Paiement à la livraison<small>Espèces ou Mobile Money au livreur</small></span>{{ tag() }}</label>
+      <p class="muted small">En validant, vous acceptez les <a href="{{ url_for('legal', slug='conditions-generales') }}">conditions générales de vente</a>.</p>
+      <div class="row-btns"><button class="btn ghost" type="button" data-next="2">Retour</button><a class="btn" href="{{ url_for('confirmation') }}" data-place-order>Payer {{ ph("Montant") }}</a></div>
+      <p class="muted small">Aucun paiement réel : la maquette passe directement à la confirmation.</p>
+    </fieldset>
+  </form>
+  <aside class="co-side">
+    <h2 class="h-s">Récapitulatif</h2>
+    <div data-cart-list data-readonly></div>
+    <div class="sum"><div><span>Sous-total</span>{{ ph("Montant") }}</div><div><span>Livraison · <span data-city>Dakar</span></span>{{ ph("Frais") }}</div><div class="tot"><span>Total</span>{{ ph("Montant") }}</div></div>
+    <p class="muted small">Une question ? WhatsApp {{ ph("numéro") }}</p>
+    {% call anno("Devise") %}Dakar (XOF) et Libreville / Port-Gentil (XAF) n'utilisent pas le même franc CFA. Afficher la devise selon le pays de livraison.{% endcall %}
+  </aside>
+</section>
+{% endblock %}

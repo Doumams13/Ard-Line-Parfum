@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ph, tag, anno, card %}
+{% block title %}Collection · ARD LINE{% endblock %}
+{% block content %}
+<section class="shop-hero">
+  <div class="shop-hero-tx">
+    <nav class="crumb" aria-label="Fil d'Ariane"><a href="{{ url_for('home') }}">Accueil</a> / Collection</nav>
+    <span class="eyebrow">Collection privée</span>
+    <h1 class="h-l">La Collection</h1>
+    <p class="muted">Six extraits de parfum, un même flacon de 35 ml.</p>
+  </div>
+  <img src="{{ url_for('static', filename='images/studio-collection.jpg') }}" alt="Les six flacons de la collection alignés">
+</section>
+<div class="toolbar">
+  <div class="filters" role="group" aria-label="Filtrer" data-filter-target="#grid">
+    <button class="chip on" type="button" data-filter="all">Toutes (6)</button>
+    <button class="chip" type="button" data-filter="noir"><i class="cap noir"></i>Bouchon noir (4)</button>
+    <button class="chip" type="button" data-filter="blanc"><i class="cap"></i>Bouchon blanc (2)</button>
+    <span class="chip static">Famille {{ ph("à définir") }}</span>
+  </div>
+  <label class="sort">Trier
+    <select id="sort"><option>Mis en avant</option><option>Nom A à Z</option><option>Prix (à venir)</option></select>
+  </label>
+</div>
+<section class="grid3" id="grid">
+  {% for p in products %}
+    {{ card(p, size="card--shop") }}
+    {% if loop.index == 3 %}
+    <div class="break" data-cap="all">
+      <img src="{{ url_for('static', filename='images/nature-noya.jpg') }}" alt="" loading="lazy">
+      <div class="break-tx"><span class="eyebrow">À la source</span><p class="h-l">Noya</p><a class="btn light sm" href="{{ url_for('product', slug='noya') }}">Découvrir</a></div>
+    </div>
+    {% endif %}
+  {% endfor %}
+</section>
+{% endblock %}

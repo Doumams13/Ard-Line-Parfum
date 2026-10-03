@@ -1,0 +1,48 @@
+{# Placeholder : information commerciale manquante, toujours en bleu #}
+{% macro ph(label) -%}<span class="ph">[{{ label }}]</span>{%- endmacro %}
+
+{# Information vue sur les affiches, à confirmer #}
+{% macro tag(label="À valider") -%}<span class="tag">{{ label }}</span>{%- endmacro %}
+
+{# Annotation de designer, masquable #}
+{% macro anno(title) -%}<aside class="anno"><b>{{ title }}</b>{{ caller() }}</aside>{%- endmacro %}
+
+{% macro val(v, label) -%}{% if v %}{{ v }}{% else %}{{ ph(label) }}{% endif %}{%- endmacro %}
+
+{% macro icon(name, cls="ico") -%}
+{%- if name == "bag" -%}<svg class="{{ cls }}" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12.5H6z"/><path d="M9 8V6.5a3 3 0 016 0V8"/></svg>
+{%- elif name == "search" -%}<svg class="{{ cls }}" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+{%- elif name == "user" -%}<svg class="{{ cls }}" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="4"/><path d="M4.5 20.5c1.2-4 4-6 7.5-6s6.3 2 7.5 6"/></svg>
+{%- elif name == "menu" -%}<svg class="{{ cls }}" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h11"/></svg>
+{%- elif name == "close" -%}<svg class="{{ cls }}" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+{%- elif name == "back" -%}<svg class="{{ cls }}" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+{%- elif name == "chat" -%}<svg class="{{ cls }}" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1112 20a8 8 0 01-4-1z"/></svg>
+{%- elif name == "lock" -%}<svg class="{{ cls }}" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>
+{%- elif name == "truck" -%}<svg class="{{ cls }}" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.5"/><circle cx="17" cy="17.5" r="1.5"/></svg>
+{%- elif name == "flacon" -%}<svg class="{{ cls }}" viewBox="0 0 32 32" aria-hidden="true"><rect x="9" y="12" width="14" height="16" rx="1"/><rect x="12" y="5" width="8" height="7"/><path d="M12 19h8"/></svg>
+{%- elif name == "clock" -%}<svg class="{{ cls }}" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11"/><path d="M16 9v7l5 3"/></svg>
+{%- elif name == "cartouche" -%}<svg class="{{ cls }}" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="8" width="22" height="16"/><rect x="3" y="6" width="4" height="4"/><rect x="25" y="6" width="4" height="4"/><rect x="3" y="22" width="4" height="4"/><rect x="25" y="22" width="4" height="4"/></svg>
+{%- elif name == "drop" -%}<svg class="{{ cls }}" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4c5 6 8 10 8 15a8 8 0 01-16 0c0-5 3-9 8-15z"/><path d="M16 27V15"/></svg>
+{%- endif -%}
+{%- endmacro %}
+
+{# Carte produit : studio au repos, nature au survol #}
+{% macro card(p, quick=True, size="") -%}
+<article class="card {{ size }}" data-cap="{{ p.cap }}">
+  <div class="card-img">
+    <a class="card-link" href="{{ url_for('product', slug=p.slug) }}" aria-label="{{ p.name }}">
+      <img class="studio" src="{{ url_for('static', filename=p.studio) }}" alt="{{ p.name }}, flacon" loading="lazy">
+      <img class="nat" src="{{ url_for('static', filename=p.nature) }}" alt="" loading="lazy">
+    </a>
+    {% if quick %}<button class="quick" type="button" data-add="{{ p.slug }}">{{ icon("bag", "ico sm") }}Ajouter<span class="only-d">&nbsp;au panier</span></button>{% endif %}
+  </div>
+  <div class="card-meta">
+    <h3 class="pname"><a href="{{ url_for('product', slug=p.slug) }}">{{ p.name }}</a></h3>
+    <span class="ptype">{{ p.type }} · {{ p.volume }}</span>
+    <div class="card-row">
+      {{ val(p.price, "Prix") }}
+      <span class="avail"><i class="dot"></i>{{ val(p.availability, "Dispo") }}</span>
+    </div>
+  </div>
+</article>
+{%- endmacro %}
