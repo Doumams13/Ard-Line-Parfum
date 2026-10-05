@@ -32,8 +32,8 @@ def relativize(html, depth):
             target = prefix + path.rstrip("/") + "/index.html"
         return target + ("#" + anchor if anchor else "")
 
-    # attributs href / src / srcset, puis chaînes JS de base.html
-    html = re.sub(r'((?:href|src|srcset)=")/([^"]*)"', lambda m: m.group(1) + fix(m.group(2)) + '"', html)
+    # attributs href / src / srcset / data-* (galerie, lightbox), puis chaînes JS de base.html
+    html = re.sub(r'((?:href|src|srcset|data-[a-z-]+)=")/([^"]*)"', lambda m: m.group(1) + fix(m.group(2)) + '"', html)
     html = re.sub(r'(= ")/([^"]*)";', lambda m: m.group(1) + fix(m.group(2)) + '";', html)
     return html
 
