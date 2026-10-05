@@ -58,3 +58,10 @@ static/js/main.js    panier, quiz, filtres, galerie, étapes de commande
 static/images/       photos recadrées (les étiquettes affichent encore « VEDA »)
 static/fonts/        Bodoni Moda et Jost, hors ligne
 ```
+
+## Version en ligne (GitHub Pages)
+
+`python freeze.py` exporte toutes les pages en HTML statique dans le dossier `docs/` à la racine du dépôt.
+GitHub Pages sert ce dossier (Settings > Pages > Deploy from a branch > dossier `/docs`).
+Relancer `python freeze.py` puis pousser après chaque modification de la maquette.
+Les pages portent une balise `noindex` : elles ne sont pas référencées par les moteurs de recherche.

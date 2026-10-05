@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>ARD LINE · Collection privée</title>
+  <link rel="stylesheet" href="static/css/fonts.css">
+  <link rel="stylesheet" href="static/css/main.css">
+</head>
+<body class="page-home">
+
+<div class="proto-bar" role="note">
+  <span>Maquette interactive · ce n'est pas le site final</span>
+  <button type="button" id="toggleAnno" aria-pressed="true">Annotations : affichées</button>
+</div>
+
+<div class="topbar">Livraison à <span class="ph">[villes à confirmer]</span></div>
+
+<header class="hdr hdr--over" id="hdr">
+  <button class="ib only-m" type="button" data-open="menu" aria-label="Ouvrir le menu"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h11"/></svg></button>
+  <nav class="hdr-nav only-d" aria-label="Navigation principale">
+    <a href="collection/index.html" >Collection</a>
+    <a href="index.html#quiz">Votre fragrance</a>
+    <a href="a-propos/index.html" >La Maison</a>
+  </nav>
+  <a class="logo" href="index.html">ARD LINE</a>
+  <div class="hdr-act">
+    <a class="ib only-d" href="collection/index.html" aria-label="Rechercher"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></a>
+    <a class="ib only-d" href="compte/index.html" aria-label="Mon compte"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="4"/><path d="M4.5 20.5c1.2-4 4-6 7.5-6s6.3 2 7.5 6"/></svg></a>
+    <button class="ib cart-btn" type="button" data-open="drawer" aria-label="Ouvrir le panier"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12.5H6z"/><path d="M9 8V6.5a3 3 0 016 0V8"/></svg><span class="only-d">Panier</span><em class="cart-count">0</em></button>
+  </div>
+</header>
+
+<main id="main">
+
+
+<section class="hero">
+  <picture>
+    <source media="(max-width: 760px)" srcset="static/images/nature-le-ntem.jpg">
+    <img class="hero-img" src="static/images/nature-mingoue.jpg" alt="Le flacon Mingoué posé dans un torrent">
+  </picture>
+  <div class="hero-in reveal">
+    <span class="eyebrow">Collection privée</span>
+    <h1 class="hero-title">ARD LINE</h1>
+    <p class="hero-sub ph-block">Des fragrances nées de l'eau vive et de la pierre.</p>
+    <div class="ctas">
+      <a class="btn light" href="collection/index.html">Découvrir la collection</a>
+      <a class="btn ghost-light" href="#collection">Explorer les parfums</a>
+    </div>
+  </div>
+  <p class="hero-credit only-d"><i></i>Sur l'image : Mingoué, extrait de parfum 35 ml</p>
+  <aside class="anno"><b>Hero</b>Photo paysage sur desktop (Mingoué), photo portrait dédiée sur mobile (Le Ntem). Léger zoom lent à l'arrivée. L'accroche est provisoire : le slogan n'est pas choisi.</aside>
+</section>
+
+
+<section class="sec essence">
+  <div class="essence-tx reveal">
+    <span class="eyebrow">La Maison</span>
+    <h2 class="h-l">L'essence <em>ARD LINE</em></h2>
+    <div class="rule short"></div>
+    <p class="ph-block">ARD LINE tient son nom d'Ardline. Une maison qui compose ses propres extraits de parfum et les photographie là où ils prennent leur sens : au bord de l'eau, sur la pierre, dans la lumière. Texte à remplacer par la présentation officielle de la marque.</p>
+    <span class="sig">Ardline</span>
+    <a class="btn ghost" href="a-propos/index.html">Découvrir notre univers</a>
+  </div>
+  <div class="essence-pics reveal">
+    <img class="a parallax" src="static/images/nature-la-sebe.jpg" alt="La Sébé au bord de l'eau, entourée de fleurs blanches">
+    <img class="b" src="static/images/studio-noya-socle.jpg" alt="Noya sur un socle de marbre">
+  </div>
+  <aside class="anno"><b>Composition</b>Grande photo nature et petite image studio en superposition : les deux registres de la marque dès la deuxième section.</aside>
+</section>
+
+
+<section class="sec collection" id="collection">
+  <div class="sec-head">
+    <div>
+      <span class="eyebrow">Six fragrances</span>
+      <h2 class="h-l">La Collection ARD LINE</h2>
+      <p class="muted">Découvrez les fragrances de la Collection Privée.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filtrer par bouchon" data-filter-target="#shelf">
+      <button class="chip on" type="button" data-filter="all">Toutes</button>
+      <button class="chip" type="button" data-filter="noir"><i class="cap noir"></i>Bouchon noir</button>
+      <button class="chip" type="button" data-filter="blanc"><i class="cap"></i>Bouchon blanc</button>
+    </div>
+  </div>
+  <div class="shelf" id="shelf">
+    <article class="card " data-cap="noir">
+  <div class="card-img">
+    <a class="card-link" href="parfum/noya/index.html" aria-label="Noya">
+      <img class="studio" src="static/images/studio-noya.jpg" alt="Noya, flacon" loading="lazy">
+      <img class="nat" src="static/images/nature-noya.jpg" alt="" loading="lazy">
+    </a>
+    <button class="quick" type="button" data-add="noya"><svg class="ico sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12.5H6z"/><path d="M9 8V6.5a3 3 0 016 0V8"/></svg>Ajouter<span class="only-d">&nbsp;au panier</span></button>
+  </div>
+  <div class="card-meta">
+    <h3 class="pname"><a href="parfum/noya/index.html">Noya</a></h3>
+    <span class="ptype">Extrait de parfum · 35 ml</span>
+    <div class="card-row">
+      <span class="ph">[Prix]</span>
+      <span class="avail"><i class="dot"></i><span class="ph">[Dispo]</span></span>
+    </div>
+  </div>
+</article><article class="card " data-cap="noir">
+  <div class="card-img">
+    <a class="card-link" href="parfum/oua/index.html" aria-label="Oua">
+      <img class="studio" src="static/images/studio-oua.jpg" alt="Oua, flacon" loading="lazy">
+      <img class="nat" src="static/images/nature-oua.jpg" alt="" loading="lazy">
+    </a>
+    <button class="quick" type="button" data-add="oua"><svg class="ico sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12.5H6z"/><path d="M9 8V6.5a3 3 0 016 0V8"/></svg>Ajouter<span class="only-d">&nbsp;au panier</span></button>
+  </div>
+  <div class="card-meta">
+    <h3 class="pname"><a href="parfum/oua/index.html">Oua</a></h3>
+    <span class="ptype">Extrait de parfum · 35 ml</span>
+    <div class="card-row">
+      <span class="ph">[Prix]</span>
+      <span class="avail"><i class="dot"></i><span class="ph">[Dispo]</span></span>
+    </div>
+  </div>
+</article><article class="card " data-cap="noir">
+  <div class="card-img">
+    <a class="card-link" href="parfum/aworiwonga/index.html" aria-label="Aworiwonga">
+      <img class="studio" src="static/images/studio-aworiwonga.jpg" alt="Aworiwonga, flacon" loading="lazy">
+      <img class="nat" src="static/images/nature-aworiwonga.jpg" alt="" loading="lazy">
+    </a>
+    <button class="quick" type="button" data-add="aworiwonga"><svg class="ico sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12.5H6z"/><path d="M9 8V6.5a3 3 0 016 0V8"/></svg>Ajouter<span class="only-d">&nbsp;au panier</span></button>
+  </div>
+  <div class="card-meta">
+    <h3 class="pname"><a href="parfum/aworiwonga/index.html">Aworiwonga</a></h3>
+    <span class="ptype">Extrait de parfum · 35 ml</span>
+    <div class="card-row">
+      <span class="ph">[Prix]</span>
+      <span class="avail"><i class="dot"></i><span class="ph">[Dispo]</span></span>
+    </div>
+  </div>
+</article><article class="card " data-cap="blanc">
+  <div class="card-img">
+    <a class="card-link" href="parfum/la-sebe/index.html" aria-label="La Sébé">
+      <img class="studio" src="static/images/studio-la-sebe.jpg" alt="La Sébé, flacon" loading="lazy">
+      <img class="nat" src="static/images/nature-la-sebe.jpg" alt="" loading="lazy">
+    </a>
+    <button class="quick" type="button" data-add="la-sebe"><svg class="ico sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12.5H6z"/><path d="M9 8V6.5a3 3 0 016 0V8"/></svg>Ajouter<span class="only-d">&nbsp;au panier</span></button>
+  </div>
+  <div class="card-meta">
+    <h3 class="pname"><a href="parfum/la-sebe/index.html">La Sébé</a></h3>
+    <span class="ptype">Extrait de parfum · 35 ml</span>
+    <div class="card-row">
+      <span class="ph">[Prix]</span>
+      <span class="avail"><i class="dot"></i><span class="ph">[Dispo]</span></span>
+    </div>
+  </div>
+</article><article class="card " data-cap="blanc">
+  <div class="card-img">
+    <a class="card-link" href="parfum/le-ntem/index.html" aria-label="Le Ntem">
+      <img class="studio" src="static/images/studio-le-ntem.jpg" alt="Le Ntem, flacon" loading="lazy">
+      <img class="nat" src="static/images/nature-le-ntem.jpg" alt="" loading="lazy">
+    </a>
+    <button class="quick" type="button" data-add="le-ntem"><svg class="ico sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12.5H6z"/><path d="M9 8V6.5a3 3 0 016 0V8"/></svg>Ajouter<span class="only-d">&nbsp;au panier</span></button>
+  </div>
+  <div class="card-meta">
+    <h3 class="pname"><a href="parfum/le-ntem/index.html">Le Ntem</a></h3>
+    <span class="ptype">Extrait de parfum · 35 ml</span>
+    <div class="card-row">
+      <span class="ph">[Prix]</span>
+      <span class="avail"><i class="dot"></i><span class="ph">[Dispo]</span></span>
+    </div>
+  </div>
+</article><article class="card " data-cap="noir">
+  <div class="card-img">
+    <a class="card-link" href="parfum/mingoue/index.html" aria-label="Mingoué">
+      <img class="studio" src="static/images/studio-mingoue.jpg" alt="Mingoué, flacon" loading="lazy">
+      <img class="nat" src="static/images/nature-mingoue.jpg" alt="" loading="lazy">
+    </a>
+    <button class="quick" type="button" data-add="mingoue"><svg class="ico sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12.5H6z"/><path d="M9 8V6.5a3 3 0 016 0V8"/></svg>Ajouter<span class="only-d">&nbsp;au panier</span></button>
+  </div>
+  <div class="card-meta">
+    <h3 class="pname"><a href="parfum/mingoue/index.html">Mingoué</a></h3>
+    <span class="ptype">Extrait de parfum · 35 ml</span>
+    <div class="card-row">
+      <span class="ph">[Prix]</span>
+      <span class="avail"><i class="dot"></i><span class="ph">[Dispo]</span></span>
+    </div>
+  </div>
+</article>
+  </div>
+  <div class="shelf-line"></div>
+  <div class="shelf-foot">
+    <span class="muted only-d">Les six flacons partagent la même silhouette : une étagère d'objets de collection, pas une grille de produits.</span>
+    <span class="muted only-m swipe-hint">Glisser pour voir la suite</span>
+    <a class="lnk" href="collection/index.html">Voir toute la collection</a>
+  </div>
+  <aside class="anno"><b>Survol et mobile</b>Desktop : au survol, le flacon studio laisse place à sa photo nature et l'ajout rapide apparaît. Mobile : carrousel à glisser, une carte et demie visible.</aside>
+</section>
+
+
+<section class="immersion">
+  <img class="parallax" src="static/images/nature-roche-algues-2.jpg" alt="Flacons posés sur des roches volcaniques au milieu des algues">
+  <div class="immersion-tx reveal">
+    <span class="eyebrow">Immersion</span>
+    <p class="big">Une fragrance.<em>Une émotion.</em></p>
+    <a class="btn light" href="collection/index.html">Explorer les fragrances</a>
+  </div>
+  <aside class="anno"><b>Rupture</b>Image pleine largeur en parallax lent. Phrase proposée par le brief, conservée comme direction.</aside>
+</section>
+
+
+<section class="sec quiz" id="quiz">
+  <div class="quiz-main">
+    <span class="eyebrow">Votre fragrance</span>
+    <h2 class="h-l">Quelle fragrance vous ressemble ?</h2>
+    <ol class="steps"><li class="on">Vos envies</li><li>Votre moment</li><li>Vos fragrances</li></ol>
+    <p class="q">Choisissez une ou plusieurs envies</p>
+    <div class="profiles" role="group" aria-label="Profils olfactifs">
+      
+      <button class="pf" type="button" data-profile="floral" aria-pressed="false"><b>Floral</b><span>Pétales, douceur</span></button>
+      
+      <button class="pf" type="button" data-profile="frais" aria-pressed="false"><b>Frais</b><span>Agrumes, légèreté</span></button>
+      
+      <button class="pf" type="button" data-profile="intense" aria-pressed="false"><b>Intense</b><span>Présence, profondeur</span></button>
+      
+      <button class="pf" type="button" data-profile="aquatique" aria-pressed="false"><b>Aquatique</b><span>Eau, minéral</span></button>
+      
+      <button class="pf" type="button" data-profile="sensuel" aria-pressed="false"><b>Sensuel</b><span>Chaleur, peau</span></button>
+      
+      <button class="pf" type="button" data-profile="boise" aria-pressed="false"><b>Boisé</b><span>Écorce, terre</span></button>
+      
+    </div>
+    <p class="q">Pour quel moment ?</p>
+    <div class="moments" role="radiogroup" aria-label="Moment">
+      <button class="chip on" type="button" data-moment="Le jour">Le jour</button>
+      <button class="chip" type="button" data-moment="Le soir">Le soir</button>
+      <button class="chip" type="button" data-moment="Les deux">Les deux</button>
+    </div>
+  </div>
+  <aside class="result" id="quiz-result">
+    <div class="result-head"><span class="eyebrow">Votre sélection</span><span class="match" data-quiz-summary>Aucune envie choisie</span></div>
+    <p class="h-m" data-quiz-title>Choisissez vos envies</p>
+    <div data-quiz-list class="res-list"><p class="muted">Vos fragrances apparaîtront ici dès le premier choix.</p></div>
+    <span class="tag">Exemple : correspondances parfum / profil à définir par la marque</span>
+  </aside>
+  <div class="quiz-sticky only-m"><a class="btn full" href="#quiz-result" data-quiz-btn>Voir mes fragrances</a></div>
+  <aside class="anno"><b>Interaction</b>Les résultats se mettent à jour à chaque clic, sans changer de page. Sur mobile, le bouton collant compte les résultats en direct.</aside>
+</section>
+
+
+
+<section class="feat">
+  <div class="feat-img"><img src="static/images/nature-noya.jpg" alt="Noya au bord de la rivière"></div>
+  <div class="feat-tx reveal">
+    <span class="eyebrow">Fragrance à l'honneur</span>
+    <h2 class="feat-name">Noya</h2>
+    <p class="caps">Extrait de parfum · 35 ml</p>
+    <p class="ph-block">Courte description du parfum, deux à trois phrases sur son caractère et le moment où le porter.</p>
+    <details class="acc" open><summary>Notes olfactives</summary>
+      <div class="notes"><div><span>Tête</span><span class="ph">[Notes de tête]</span></div><div><span>Cœur</span><span class="ph">[Notes de cœur]</span></div><div><span>Fond</span><span class="ph">[Notes de fond]</span></div></div>
+    </details>
+    <div class="facts">
+      <div><small>Famille</small><span class="ph">[À définir]</span></div>
+      <div><small>Tenue</small><span>24 h <span class="tag">À valider</span></span></div>
+      <div><small>Bouchon</small>Noir</div>
+    </div>
+    <p class="price"><span class="ph">[Prix]</span></p>
+    <div class="ctas">
+      <button class="btn" type="button" data-add="noya">Ajouter au panier</button>
+      <a class="btn ghost" href="parfum/noya/index.html">Voir la fiche</a>
+    </div>
+  </div>
+  <aside class="anno"><b>Module réutilisable</b>Même gabarit pour n'importe quel parfum : on change le produit dans app.py. Les notes restent vides tant que la marque ne les a pas fournies.</aside>
+</section>
+
+
+<section class="sec" id="carnet">
+  <div class="sec-head">
+    <div><span class="eyebrow">Carnet de source</span><h2 class="h-l">Eau, pierre, <em>lumière</em></h2></div>
+    <a class="lnk" href="a-propos/index.html">Suivre l'univers</a>
+  </div>
+  <div class="story">
+    
+    <figure class="st1"><button type="button" class="zoom" data-lightbox="/static/images/nature-le-ntem.jpg" aria-label="Agrandir : Lumière"><img src="static/images/nature-le-ntem.jpg" alt="" ></button><figcaption>Lumière</figcaption></figure>
+    
+    <figure class="st2"><button type="button" class="zoom" data-lightbox="/static/images/nature-mingoue.jpg" aria-label="Agrandir : Eau"><img src="static/images/nature-mingoue.jpg" alt="" ></button><figcaption>Eau</figcaption></figure>
+    
+    <figure class="st3"><button type="button" class="zoom" data-lightbox="/static/images/nature-roche-algues.jpg" aria-label="Agrandir : Pierre"><img src="static/images/nature-roche-algues.jpg" alt="" ></button><figcaption>Pierre</figcaption></figure>
+    
+    <figure class="st4"><button type="button" class="zoom" data-lightbox="/static/images/nature-roll-on-pierre.jpg" aria-label="Agrandir : Matière"><img src="static/images/nature-roll-on-pierre.jpg" alt="" ></button><figcaption>Matière</figcaption></figure>
+    
+    <figure class="st5"><button type="button" class="zoom" data-lightbox="/static/images/nature-aworiwonga.jpg" aria-label="Agrandir : Source"><img src="static/images/nature-aworiwonga.jpg" alt="" style="object-position:50% 70%"></button><figcaption>Source</figcaption></figure>
+    
+    <figure class="st6"><button type="button" class="zoom" data-lightbox="/static/images/nature-cercle-flacons.jpg" aria-label="Agrandir : Parfum"><img src="static/images/nature-cercle-flacons.jpg" alt="" ></button><figcaption>Parfum</figcaption></figure>
+    
+  </div>
+  <aside class="anno"><b>Galerie</b>Quasiment pas de texte. Clic sur une image : visionneuse plein écran.</aside>
+</section>
+
+
+<section class="sec why-sec">
+  <div class="sec-head"><h2 class="h-l">Pourquoi <em>ARD LINE</em> ?</h2><span class="tag">Textes et promesses à valider</span></div>
+  <div class="why">
+    <div><svg class="ico big" viewBox="0 0 32 32" aria-hidden="true"><rect x="9" y="12" width="14" height="16" rx="1"/><rect x="12" y="5" width="8" height="7"/><path d="M12 19h8"/></svg><h4>Extrait de parfum</h4><p>La concentration inscrite sur chaque étiquette de la collection.</p></div>
+    <div><svg class="ico big" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11"/><path d="M16 9v7l5 3"/></svg><h4>Longue tenue</h4><span class="tag">24 h à valider</span><p><span class="ph">[Durée à confirmer avant publication]</span></p></div>
+    <div><svg class="ico big" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="8" width="22" height="16"/><rect x="3" y="6" width="4" height="4"/><rect x="25" y="6" width="4" height="4"/><rect x="3" y="22" width="4" height="4"/><rect x="25" y="22" width="4" height="4"/></svg><h4>Collection privée</h4><p>Six fragrances signées par la maison.</p></div>
+    <div><svg class="ico big" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4c5 6 8 10 8 15a8 8 0 01-16 0c0-5 3-9 8-15z"/><path d="M16 27V15"/></svg><h4>Qualité</h4><p><span class="ph">[Argument qualité à fournir]</span></p></div>
+  </div>
+</section>
+
+
+<section class="sec social">
+  <div class="sec-head">
+    <div><span class="eyebrow">Suivez la maison</span><h2 class="h-l"><span class="ph">[@compte ARD LINE]</span></h2></div>
+    <div class="nets" role="tablist" aria-label="Réseaux">
+      <button class="on" type="button" data-net="all">Tous</button><button type="button" data-net="Instagram">Instagram</button><button type="button" data-net="TikTok">TikTok</button><button type="button" data-net="Facebook">Facebook</button>
+    </div>
+  </div>
+  <div class="sgrid">
+    
+    <figure data-net="Instagram"><img src="static/images/nature-oua.jpg" alt="" loading="lazy"><span class="badge">Instagram</span></figure>
+    
+    <figure data-net="TikTok"><img src="static/images/nature-le-ntem.jpg" alt="" loading="lazy"><span class="play">▶</span><span class="badge">TikTok</span></figure>
+    
+    <figure data-net="Instagram"><img src="static/images/studio-noya-socle.jpg" alt="" loading="lazy"><span class="badge">Instagram</span></figure>
+    
+    <figure data-net="Facebook"><img src="static/images/nature-roche-algues-2.jpg" alt="" loading="lazy"><span class="badge">Facebook</span></figure>
+    
+    <figure data-net="TikTok"><img src="static/images/nature-la-sebe.jpg" alt="" loading="lazy"><span class="play">▶</span><span class="badge">TikTok</span></figure>
+    
+    <figure data-net="Instagram"><img src="static/images/nature-cercle-flacons.jpg" alt="" loading="lazy"><span class="badge">Instagram</span></figure>
+    
+  </div>
+  <aside class="anno"><b>Réseaux</b>Les comptes actuels s'appellent « VEDA Parfumerie ». Noms des comptes ARD LINE à confirmer. En production, la grille serait alimentée par les dernières publications.</aside>
+</section>
+
+
+<section class="final">
+  <img src="static/images/nature-cercle-flacons.jpg" alt="">
+  <div class="final-tx reveal">
+    <span class="eyebrow">Collection privée</span>
+    <h2 class="h-l">Trouvez <em>votre</em> source.</h2>
+    <span class="tag">Message provisoire</span>
+    <a class="btn light" href="collection/index.html">Découvrir la collection</a>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" hidden><button class="ib" type="button" data-close="lightbox" aria-label="Fermer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button><img alt=""></div>
+</main>
+
+<footer class="ftr">
+  <div class="ftr-top">
+    <div class="ftr-brand">
+      <a class="logo" href="index.html">ARD LINE</a>
+      <p>Collection privée. Extraits de parfum.</p>
+      <form class="news" onsubmit="event.preventDefault(); ARD.toast('Inscription simulée dans la maquette');">
+        <label for="news-email">Recevoir les nouveautés</label>
+        <div><input id="news-email" type="email" placeholder="Votre adresse email"><button type="submit">S'inscrire</button></div>
+      </form>
+    </div>
+    <details class="ftr-col" open><summary>Navigation</summary><ul>
+      <li><a href="index.html">Accueil</a></li><li><a href="collection/index.html">Collection</a></li>
+      <li><a href="a-propos/index.html">À propos</a></li><li><a href="contact/index.html">Contact</a></li><li><a href="faq/index.html">FAQ</a></li></ul></details>
+    <details class="ftr-col" open><summary>Service client</summary><ul>
+      <li>WhatsApp <span class="ph">[numéro]</span></li><li>Téléphone <span class="ph">[numéro]</span></li><li>Email <span class="ph">[adresse]</span></li></ul></details>
+    <details class="ftr-col" open><summary>Réseaux</summary><ul>
+      <li>Instagram <span class="ph">[compte]</span></li><li>TikTok <span class="ph">[compte]</span></li><li>Facebook <span class="ph">[compte]</span></li></ul></details>
+    <details class="ftr-col" open><summary>Informations</summary><ul>
+      <li><a href="legal/mentions-legales/index.html">Mentions légales</a></li><li><a href="legal/confidentialite/index.html">Politique de confidentialité</a></li><li><a href="legal/conditions-generales/index.html">Conditions générales de vente</a></li><li><a href="legal/livraison-retours/index.html">Livraison &amp; retours</a></li></ul></details>
+  </div>
+  <div class="ftr-bot"><span>© ARD LINE <span class="ph">[année]</span></span><span>Paiement : <span class="ph">[moyens à confirmer]</span></span></div>
+</footer>
+
+
+<div class="menu" id="menu" hidden>
+  <div class="menu-head">
+    <button class="ib" type="button" data-close="menu" aria-label="Fermer le menu"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <span class="logo">ARD LINE</span>
+    <button class="ib" type="button" data-open="drawer" aria-label="Panier"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12.5H6z"/><path d="M9 8V6.5a3 3 0 016 0V8"/></svg></button>
+  </div>
+  <nav class="menu-nav">
+    <a href="collection/index.html">Collection</a>
+    <a href="index.html#quiz" data-close="menu">Votre fragrance</a>
+    <a href="a-propos/index.html">La Maison</a>
+    <a class="it gold" href="index.html#carnet" data-close="menu">Carnet de source</a>
+  </nav>
+  <div class="menu-thumbs">
+    <a href="parfum/noya/index.html"><img src="static/images/studio-noya.jpg" alt="Noya"></a><a href="parfum/oua/index.html"><img src="static/images/studio-oua.jpg" alt="Oua"></a><a href="parfum/aworiwonga/index.html"><img src="static/images/studio-aworiwonga.jpg" alt="Aworiwonga"></a>
+  </div>
+  <div class="menu-foot">
+    <a href="compte/index.html">Mon compte</a><a href="contact/index.html">Contact &amp; WhatsApp</a><a href="faq/index.html">FAQ</a>
+  </div>
+</div>
+
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" aria-label="Panier" hidden>
+  <div class="drawer-head"><h2>Votre panier <span class="muted cart-count-txt">(0)</span></h2><button class="ib" type="button" data-close="drawer" aria-label="Fermer le panier"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="drawer-body" data-cart-list></div>
+  <div class="drawer-foot">
+    <div class="sum"><div><span>Sous-total</span><span class="ph">[Montant]</span></div><div><span>Livraison</span><span class="muted">Calculée à l'étape suivante</span></div></div>
+    <a class="btn full" href="commande/index.html">Commander</a>
+    <a class="wa-link" href="contact/index.html">ou commander sur WhatsApp</a>
+  </div>
+</aside>
+
+<a class="wa-float" href="contact/index.html" aria-label="Commander sur WhatsApp"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1112 20a8 8 0 01-4-1z"/></svg></a>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+  window.ARD_PRODUCTS = [{"availability": null, "cap": "noir", "description": null, "family": null, "juice": "Or olive", "name": "Noya", "nature": "images/nature-noya.jpg", "notes": {"C\u0153ur": null, "Fond": null, "T\u00eate": null}, "price": null, "slug": "noya", "studio": "images/studio-noya.jpg", "type": "Extrait de parfum", "volume": "35 ml"}, {"availability": null, "cap": "noir", "description": null, "family": null, "juice": "Vert d\u0027eau", "name": "Oua", "nature": "images/nature-oua.jpg", "notes": {"C\u0153ur": null, "Fond": null, "T\u00eate": null}, "price": null, "slug": "oua", "studio": "images/studio-oua.jpg", "type": "Extrait de parfum", "volume": "35 ml"}, {"availability": null, "cap": "noir", "description": null, "family": null, "juice": "Or p\u00e2le", "name": "Aworiwonga", "nature": "images/nature-aworiwonga.jpg", "notes": {"C\u0153ur": null, "Fond": null, "T\u00eate": null}, "price": null, "slug": "aworiwonga", "studio": "images/studio-aworiwonga.jpg", "type": "Extrait de parfum", "volume": "35 ml"}, {"availability": null, "cap": "blanc", "description": null, "family": null, "juice": "Or p\u00e2le", "name": "La S\u00e9b\u00e9", "nature": "images/nature-la-sebe.jpg", "notes": {"C\u0153ur": null, "Fond": null, "T\u00eate": null}, "price": null, "slug": "la-sebe", "studio": "images/studio-la-sebe.jpg", "type": "Extrait de parfum", "volume": "35 ml"}, {"availability": null, "cap": "blanc", "description": null, "family": null, "juice": "Or p\u00e2le", "name": "Le Ntem", "nature": "images/nature-le-ntem.jpg", "notes": {"C\u0153ur": null, "Fond": null, "T\u00eate": null}, "price": null, "slug": "le-ntem", "studio": "images/studio-le-ntem.jpg", "type": "Extrait de parfum", "volume": "35 ml"}, {"availability": null, "cap": "noir", "description": null, "family": null, "juice": "Or p\u00e2le", "name": "Mingou\u00e9", "nature": "images/nature-mingoue.jpg", "notes": {"C\u0153ur": null, "Fond": null, "T\u00eate": null}, "price": null, "slug": "mingoue", "studio": "images/studio-mingoue.jpg", "type": "Extrait de parfum", "volume": "35 ml"}];
+  window.ARD_QUIZ = {"aquatique": ["oua", "le-ntem"], "boise": ["aworiwonga"], "floral": ["la-sebe"], "frais": ["oua"], "intense": ["noya", "aworiwonga"], "sensuel": ["mingoue"]};
+  window.ARD_STATIC = "static/";
+  window.ARD_PRODUCT_URL = "parfum/__slug__/index.html";
+  window.ARD_COLLECTION_URL = "collection/index.html";
+</script>
+<script src="static/js/main.js"></script>
+</body>
+</html>
