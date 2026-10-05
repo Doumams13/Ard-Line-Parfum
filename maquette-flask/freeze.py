@@ -58,6 +58,9 @@ def main():
     shutil.copytree(os.path.join(HERE, "static"), os.path.join(OUT, "static"),
                     ignore=shutil.ignore_patterns("__pycache__"))
     open(os.path.join(OUT, ".nojekyll"), "w").close()
+    # maquette non validée : pas d'indexation par les moteurs de recherche
+    with open(os.path.join(OUT, "robots.txt"), "w") as f:
+        f.write("User-agent: *\nDisallow: /\n")
     print(f"{len(ROUTES)} pages exportées dans {os.path.normpath(OUT)}")
 
 
