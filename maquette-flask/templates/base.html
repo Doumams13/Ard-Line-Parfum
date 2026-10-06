@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="robots" content="noindex, nofollow">
   <title>{% block title %}ARD LINE · Collection privée{% endblock %}</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo/favicon.png') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
@@ -24,7 +25,7 @@
     <a href="{{ url_for('home') }}#quiz">Votre fragrance</a>
     <a href="{{ url_for('about') }}" {% if page == 'about' %}aria-current="page"{% endif %}>La Maison</a>
   </nav>
-  <a class="logo" href="{{ url_for('home') }}">ARD LINE</a>
+  <a class="logo" href="{{ url_for('home') }}"><img class="logo-mono" src="{{ url_for('static', filename='images/logo/ard-line-monogramme.png') }}" alt="" width="62" height="54"><img class="logo-nom" src="{{ url_for('static', filename='images/logo/ard-line-nom.png') }}" alt="ARD LINE" width="216" height="26"></a>
   <div class="hdr-act">
     <a class="ib only-d" href="{{ url_for('collection') }}" aria-label="Rechercher">{{ icon("search") }}</a>
     <a class="ib only-d" href="{{ url_for('account') }}" aria-label="Mon compte">{{ icon("user") }}</a>
@@ -37,7 +38,7 @@
 <footer class="ftr">
   <div class="ftr-top">
     <div class="ftr-brand">
-      <a class="logo" href="{{ url_for('home') }}">ARD LINE</a>
+      <a class="logo logo-full" href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='images/logo/ard-line-logo.png') }}" alt="ARD LINE" width="234" height="180"></a>
       <p>Collection privée. Extraits de parfum.</p>
       <form class="news" onsubmit="event.preventDefault(); ARD.toast('Inscription simulée dans la maquette');">
         <label for="news-email">Recevoir les nouveautés</label>
@@ -61,7 +62,7 @@
 <div class="menu" id="menu" hidden>
   <div class="menu-head">
     <button class="ib" type="button" data-close="menu" aria-label="Fermer le menu">{{ icon("close") }}</button>
-    <span class="logo">ARD LINE</span>
+    <span class="logo"><img class="logo-mono" src="{{ url_for('static', filename='images/logo/ard-line-monogramme.png') }}" alt="" width="62" height="54"><img class="logo-nom" src="{{ url_for('static', filename='images/logo/ard-line-nom.png') }}" alt="ARD LINE" width="216" height="26"></span>
     <button class="ib" type="button" data-open="drawer" aria-label="Panier">{{ icon("bag") }}</button>
   </div>
   <nav class="menu-nav">
