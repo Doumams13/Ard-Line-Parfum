@@ -4,6 +4,7 @@ Usage :  python freeze.py
 Chaque page devient un fichier index.html dans son dossier, avec des liens relatifs :
 le site fonctionne sous n'importe quelle adresse (https://<compte>.github.io/<depot>/).
 """
+import hashlib
 import os
 import re
 import shutil
@@ -31,6 +32,12 @@ def relativize(html, depth):
         else:
             target = prefix + path.rstrip("/") + "/index.html"
         return target + ("#" + anchor if anchor else "")
+
+    # version dans l'URL des CSS/JS : le navigateur recharge les fichiers modifiés
+    for asset in ("css/fonts.css", "css/main.css", "js/main.js"):
+        with open(os.path.join(HERE, "static", asset), "rb") as f:
+            version = hashlib.md5(f.read()).hexdigest()[:8]
+        html = html.replace(f'"/static/{asset}"', f'"/static/{asset}?v={version}"')
 
     # attributs href / src / srcset / data-* (galerie, lightbox), puis chaînes JS de base.html
     html = re.sub(r'((?:href|src|srcset|data-[a-z-]+)=")/([^"]*)"', lambda m: m.group(1) + fix(m.group(2)) + '"', html)
