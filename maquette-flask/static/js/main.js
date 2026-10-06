@@ -151,6 +151,46 @@
   window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
   onScroll();
 
+  /* ───── Accueil : halo de lumière qui révèle la photo ───── */
+  var hero = $("[data-hero-light]");
+  if (hero) {
+    var hint = $("[data-hero-hint]", hero), touch = window.matchMedia("(hover: none)").matches;
+    var R = 0, target = 0, drift = true, heroVisible = true, t0 = performance.now(), idle;
+    var size = function () { target = Math.max(150, Math.min(hero.clientWidth, hero.clientHeight) * 0.36); };
+    var setPos = function (x, y) { hero.style.setProperty("--x", x + "px"); hero.style.setProperty("--y", y + "px"); };
+    size(); window.addEventListener("resize", size);
+    if (touch && hint) hint.textContent = "Faites glisser votre doigt";
+    var follow = function (e) {
+      var r = hero.getBoundingClientRect(), pt = e.touches ? e.touches[0] : e;
+      drift = false; setPos(pt.clientX - r.left, pt.clientY - r.top);
+      if (!e.touches) hero.classList.add("pointer");
+      clearTimeout(idle); idle = setTimeout(function () { drift = true; hero.classList.remove("pointer"); }, 2500);
+    };
+    hero.addEventListener("mousemove", follow);
+    hero.addEventListener("touchmove", follow, { passive: true });
+    hero.addEventListener("touchstart", follow, { passive: true });
+    hero.addEventListener("mouseleave", function () { drift = true; hero.classList.remove("pointer"); });
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { heroVisible = es[0].isIntersecting; }).observe(hero);
+    if (reduce) {
+      hero.style.setProperty("--r", target + "px");
+    } else {
+      setTimeout(function () {
+        (function tick(now) {
+          if (heroVisible) {
+            R += (target - R) * 0.04;
+            hero.style.setProperty("--r", R.toFixed(1) + "px");
+            if (drift) {
+              var t = (now - t0) / 1000, w = hero.clientWidth, h = hero.clientHeight;
+              if (mobile.matches) setPos(w * (0.5 + 0.22 * Math.sin(t * 0.42)), h * (0.32 + 0.12 * Math.sin(t * 0.67 + 1)));
+              else setPos(w * (0.6 + 0.14 * Math.sin(t * 0.42)), h * (0.56 + 0.18 * Math.sin(t * 0.67 + 1)));
+            }
+          }
+          requestAnimationFrame(tick);
+        })(performance.now());
+      }, 1600);
+    }
+  }
+
   /* ───── Apparitions (le contenu reste visible sans JS ou sans observer) ───── */
   if ("IntersectionObserver" in window && !reduce) {
     var io = new IntersectionObserver(function (entries) {
