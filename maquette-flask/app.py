@@ -29,7 +29,6 @@ for p in PRODUCTS:
         nature=f"images/nature-{p['slug']}.jpg",
         price=PRICE,                     # même prix pour toute la collection (MaCi, 07/10/2026)
         price_label=f"{PRICE:,}".replace(",", "\u00a0") + "\u00a0" + CURRENCY,
-        availability=None,               # à fournir
         description=None,                # à fournir
         family=None,                     # à fournir
         notes={"Tête": None, "Cœur": None, "Fond": None},  # à fournir

@@ -38,8 +38,9 @@
     <span class="eyebrow">La Maison</span>
     <h2 class="h-l">L'essence <em>ARD LINE</em></h2>
     <div class="rule short"></div>
-    <p class="ph-block">ARD LINE tient son nom d'Ardline. Une maison qui compose ses propres extraits de parfum et les photographie là où ils prennent leur sens : au bord de l'eau, sur la pierre, dans la lumière. Texte à remplacer par la présentation officielle de la marque.</p>
-    <span class="sig">Ardline</span>
+    <p class="lead">Ard Line est une signature olfactive où élégance, caractère et raffinement se rencontrent.</p>
+    <p>Des fragrances pensées pour révéler votre personnalité, sublimer votre présence et laisser une empreinte mémorable.</p>
+    <span class="sig">Ard Line — une essence, une présence, une signature.</span>
     <a class="btn ghost" href="{{ url_for('about') }}">Découvrir notre univers</a>
   </div>
   <div class="essence-pics reveal">
@@ -157,12 +158,11 @@
 
 {# 8 · Pourquoi ARD LINE #}
 <section class="sec why-sec">
-  <div class="sec-head"><h2 class="h-l">Pourquoi <em>ARD LINE</em> ?</h2>{{ tag("Textes et promesses à valider") }}</div>
-  <div class="why">
-    <div>{{ icon("flacon", "ico big") }}<h4>Extrait de parfum</h4><p>La concentration inscrite sur chaque étiquette de la collection.</p></div>
-    <div>{{ icon("clock", "ico big") }}<h4>Longue tenue</h4>{{ tag("24 h à valider") }}<p>{{ ph("Durée à confirmer avant publication") }}</p></div>
-    <div>{{ icon("cartouche", "ico big") }}<h4>Collection privée</h4><p>Six fragrances signées par la maison.</p></div>
-    <div>{{ icon("drop", "ico big") }}<h4>Qualité</h4><p>{{ ph("Argument qualité à fournir") }}</p></div>
+  <div class="sec-head"><h2 class="h-l">Pourquoi <em>ARD LINE</em> ?</h2></div>
+  <div class="why why-3">
+    <div>{{ icon("cartouche", "ico big") }}<h4>Une signature qui vous ressemble</h4><p>Ard Line crée des fragrances pensées pour révéler votre personnalité et laisser une empreinte unique.</p></div>
+    <div>{{ icon("flacon", "ico big") }}<h4>L'élégance dans chaque détail</h4><p>Des compositions choisies avec exigence pour offrir une expérience olfactive raffinée et distinctive.</p></div>
+    <div>{{ icon("drop", "ico big") }}<h4>Plus qu'un parfum</h4><p>Ard Line vous invite à porter une présence, une émotion et un souvenir.</p></div>
   </div>
 </section>
 
@@ -186,9 +186,9 @@
 <section class="final">
   <img src="{{ url_for('static', filename='images/nature-cercle-flacons.jpg') }}" alt="">
   <div class="final-tx reveal">
-    <span class="eyebrow">Collection privée</span>
-    <h2 class="h-l">Trouvez <em>votre</em> source.</h2>
-    {{ tag("Message provisoire") }}
+    <span class="eyebrow">Notre promesse</span>
+    <p class="promise">Vous offrir un parfum qui ne se contente pas de sentir bon, mais <em>qui vous ressemble et vous distingue.</em></p>
+    <span class="sig">Ard Line — une essence, une présence, une signature.</span>
     <a class="btn light" href="{{ url_for('collection') }}">Découvrir la collection</a>
   </div>
 </section>

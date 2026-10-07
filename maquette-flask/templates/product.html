@@ -16,7 +16,6 @@
     <span class="eyebrow">Collection privée</span>
     <h1 class="pdp-name">{{ p.name }}</h1>
     <div class="buy-line"><span class="caps">{{ p.type }} · {{ p.volume }}</span><span class="price">{{ val(p.price_label, "Prix") }}</span></div>
-    <span class="avail"><i class="dot"></i>{{ val(p.availability, "Disponibilité") }}</span>
     {% if p.description %}<p>{{ p.description }}</p>{% else %}<p class="ph-block">Description du parfum en deux à quatre phrases.</p>{% endif %}
     <div class="buy-row">
       <div class="stepper" data-stepper><button type="button" aria-label="Moins">−</button><output>1</output><button type="button" aria-label="Plus">+</button></div>
