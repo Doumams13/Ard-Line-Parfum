@@ -15,7 +15,7 @@
   <div class="buy">
     <span class="eyebrow">Collection privée</span>
     <h1 class="pdp-name">{{ p.name }}</h1>
-    <div class="buy-line"><span class="caps">{{ p.type }} · {{ p.volume }}</span><span class="price">{{ val(p.price, "Prix") }}</span></div>
+    <div class="buy-line"><span class="caps">{{ p.type }} · {{ p.volume }}</span><span class="price">{{ val(p.price_label, "Prix") }}</span></div>
     <span class="avail"><i class="dot"></i>{{ val(p.availability, "Disponibilité") }}</span>
     {% if p.description %}<p>{{ p.description }}</p>{% else %}<p class="ph-block">Description du parfum en deux à quatre phrases.</p>{% endif %}
     <div class="buy-row">
@@ -48,7 +48,7 @@
   </div>
 </section>
 <div class="buybar only-m">
-  <span class="price-sm">{{ val(p.price, "Prix") }}</span>
+  <span class="price-sm">{{ val(p.price_label, "Prix") }}</span>
   <button class="btn grow" type="button" data-add="{{ p.slug }}">Ajouter au panier</button>
 </div>
 <section class="sec similar">

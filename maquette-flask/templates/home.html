@@ -132,7 +132,7 @@
       <div><small>Tenue</small><span>24 h {{ tag() }}</span></div>
       <div><small>Bouchon</small>{{ f.cap|capitalize }}</div>
     </div>
-    <p class="price">{{ val(f.price, "Prix") }}</p>
+    <p class="price">{{ val(f.price_label, "Prix") }}</p>
     <div class="ctas">
       <button class="btn" type="button" data-add="{{ f.slug }}">Ajouter au panier</button>
       <a class="btn ghost" href="{{ url_for('product', slug=f.slug) }}">Voir la fiche</a>

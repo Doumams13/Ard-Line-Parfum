@@ -317,6 +317,7 @@ body.no-anno .anno{display:none}
 .line-item{display:grid;grid-template-columns:72px 1fr auto;gap:16px;align-items:start}
 .line-item img{width:72px;height:96px;object-fit:cover;background:var(--creme)}
 .line-item .pname{font-size:22px}
+.line-item .li-price{white-space:nowrap;font-variant-numeric:tabular-nums}
 .line-item .ctrl{display:flex;gap:14px;align-items:center;margin-top:10px}
 .remove{font-size:12px;text-decoration:underline;color:var(--pierre)}
 .empty{display:flex;flex-direction:column;gap:16px;align-items:flex-start;padding:20px 0}

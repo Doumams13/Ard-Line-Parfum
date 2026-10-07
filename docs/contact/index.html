@@ -7,7 +7,7 @@
   <title>Contact · ARD LINE</title>
   <link rel="icon" type="image/png" href="../static/images/logo/favicon.png">
   <link rel="stylesheet" href="../static/css/fonts.css?v=8e5f8d5e">
-  <link rel="stylesheet" href="../static/css/main.css?v=46610665">
+  <link rel="stylesheet" href="../static/css/main.css?v=773b38dd">
 </head>
 <body class="page-contact">
 
@@ -106,7 +106,7 @@
   <div class="drawer-head"><h2>Votre panier <span class="muted cart-count-txt">(0)</span></h2><button class="ib" type="button" data-close="drawer" aria-label="Fermer le panier"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
   <div class="drawer-body" data-cart-list></div>
   <div class="drawer-foot">
-    <div class="sum"><div><span>Sous-total</span><span class="ph">[Montant]</span></div><div><span>Livraison</span><span class="muted">Calculée à l'étape suivante</span></div></div>
+    <div class="sum"><div><span>Sous-total</span><span data-subtotal><span class="ph">[Montant]</span></span></div><div><span>Livraison</span><span class="muted">Calculée à l'étape suivante</span></div></div>
     <a class="btn full" href="../commande/index.html">Commander</a>
     <a class="wa-link" href="../contact/index.html">ou commander sur WhatsApp</a>
   </div>
@@ -116,12 +116,12 @@
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
 <script>
-  window.ARD_PRODUCTS = [{"availability": null, "cap": "noir", "description": null, "family": null, "juice": "Or olive", "name": "Noya", "nature": "images/nature-noya.jpg", "notes": {"C\u0153ur": null, "Fond": null, "T\u00eate": null}, "price": null, "slug": "noya", "studio": "images/studio-noya.jpg", "type": "Extrait de parfum", "volume": "35 ml"}, {"availability": null, "cap": "noir", "description": null, "family": null, "juice": "Vert d\u0027eau", "name": "Oua", "nature": "images/nature-oua.jpg", "notes": {"C\u0153ur": null, "Fond": null, "T\u00eate": null}, "price": null, "slug": "oua", "studio": "images/studio-oua.jpg", "type": "Extrait de parfum", "volume": "35 ml"}, {"availability": null, "cap": "noir", "description": null, "family": null, "juice": "Or p\u00e2le", "name": "Aworiwonga", "nature": "images/nature-aworiwonga.jpg", "notes": {"C\u0153ur": null, "Fond": null, "T\u00eate": null}, "price": null, "slug": "aworiwonga", "studio": "images/studio-aworiwonga.jpg", "type": "Extrait de parfum", "volume": "35 ml"}, {"availability": null, "cap": "blanc", "description": null, "family": null, "juice": "Or p\u00e2le", "name": "La S\u00e9b\u00e9", "nature": "images/nature-la-sebe.jpg", "notes": {"C\u0153ur": null, "Fond": null, "T\u00eate": null}, "price": null, "slug": "la-sebe", "studio": "images/studio-la-sebe.jpg", "type": "Extrait de parfum", "volume": "35 ml"}, {"availability": null, "cap": "blanc", "description": null, "family": null, "juice": "Or p\u00e2le", "name": "Le Ntem", "nature": "images/nature-le-ntem.jpg", "notes": {"C\u0153ur": null, "Fond": null, "T\u00eate": null}, "price": null, "slug": "le-ntem", "studio": "images/studio-le-ntem.jpg", "type": "Extrait de parfum", "volume": "35 ml"}, {"availability": null, "cap": "noir", "description": null, "family": null, "juice": "Or p\u00e2le", "name": "Mingou\u00e9", "nature": "images/nature-mingoue.jpg", "notes": {"C\u0153ur": null, "Fond": null, "T\u00eate": null}, "price": null, "slug": "mingoue", "studio": "images/studio-mingoue.jpg", "type": "Extrait de parfum", "volume": "35 ml"}];
+  window.ARD_PRODUCTS = [{"availability": null, "cap": "noir", "description": null, "family": null, "juice": "Or olive", "name": "Noya", "nature": "images/nature-noya.jpg", "notes": {"C\u0153ur": null, "Fond": null, "T\u00eate": null}, "price": 7000, "price_label": "7\u00a0000\u00a0FCFA", "slug": "noya", "studio": "images/studio-noya.jpg", "type": "Extrait de parfum", "volume": "35 ml"}, {"availability": null, "cap": "noir", "description": null, "family": null, "juice": "Vert d\u0027eau", "name": "Oua", "nature": "images/nature-oua.jpg", "notes": {"C\u0153ur": null, "Fond": null, "T\u00eate": null}, "price": 7000, "price_label": "7\u00a0000\u00a0FCFA", "slug": "oua", "studio": "images/studio-oua.jpg", "type": "Extrait de parfum", "volume": "35 ml"}, {"availability": null, "cap": "noir", "description": null, "family": null, "juice": "Or p\u00e2le", "name": "Aworiwonga", "nature": "images/nature-aworiwonga.jpg", "notes": {"C\u0153ur": null, "Fond": null, "T\u00eate": null}, "price": 7000, "price_label": "7\u00a0000\u00a0FCFA", "slug": "aworiwonga", "studio": "images/studio-aworiwonga.jpg", "type": "Extrait de parfum", "volume": "35 ml"}, {"availability": null, "cap": "blanc", "description": null, "family": null, "juice": "Or p\u00e2le", "name": "La S\u00e9b\u00e9", "nature": "images/nature-la-sebe.jpg", "notes": {"C\u0153ur": null, "Fond": null, "T\u00eate": null}, "price": 7000, "price_label": "7\u00a0000\u00a0FCFA", "slug": "la-sebe", "studio": "images/studio-la-sebe.jpg", "type": "Extrait de parfum", "volume": "35 ml"}, {"availability": null, "cap": "blanc", "description": null, "family": null, "juice": "Or p\u00e2le", "name": "Le Ntem", "nature": "images/nature-le-ntem.jpg", "notes": {"C\u0153ur": null, "Fond": null, "T\u00eate": null}, "price": 7000, "price_label": "7\u00a0000\u00a0FCFA", "slug": "le-ntem", "studio": "images/studio-le-ntem.jpg", "type": "Extrait de parfum", "volume": "35 ml"}, {"availability": null, "cap": "noir", "description": null, "family": null, "juice": "Or p\u00e2le", "name": "Mingou\u00e9", "nature": "images/nature-mingoue.jpg", "notes": {"C\u0153ur": null, "Fond": null, "T\u00eate": null}, "price": 7000, "price_label": "7\u00a0000\u00a0FCFA", "slug": "mingoue", "studio": "images/studio-mingoue.jpg", "type": "Extrait de parfum", "volume": "35 ml"}];
   window.ARD_QUIZ = {"aquatique": ["oua", "le-ntem"], "boise": ["aworiwonga"], "floral": ["la-sebe"], "frais": ["oua"], "intense": ["noya", "aworiwonga"], "sensuel": ["mingoue"]};
   window.ARD_STATIC = "../static/";
   window.ARD_PRODUCT_URL = "../parfum/__slug__/index.html";
   window.ARD_COLLECTION_URL = "../collection/index.html";
 </script>
-<script src="../static/js/main.js?v=bfe7fdd4"></script>
+<script src="../static/js/main.js?v=e447b622"></script>
 </body>
 </html>

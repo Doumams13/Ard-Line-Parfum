@@ -18,13 +18,17 @@ PRODUCTS = [
     {"slug": "le-ntem", "name": "Le Ntem", "cap": "blanc", "juice": "Or pâle"},
     {"slug": "mingoue", "name": "Mingoué", "cap": "noir", "juice": "Or pâle"},
 ]
+PRICE = 7000
+CURRENCY = "FCFA"   # XOF (Sénégal) ou XAF (Gabon) : à préciser par la marque
+
 for p in PRODUCTS:
     p.update(
         type="Extrait de parfum",        # inscrit sur l'étiquette
         volume="35 ml",                  # inscrit sur l'étiquette
         studio=f"images/studio-{p['slug']}.jpg",
         nature=f"images/nature-{p['slug']}.jpg",
-        price=None,                      # à fournir par la marque
+        price=PRICE,                     # même prix pour toute la collection (MaCi, 07/10/2026)
+        price_label=f"{PRICE:,}".replace(",", "\u00a0") + "\u00a0" + CURRENCY,
         availability=None,               # à fournir
         description=None,                # à fournir
         family=None,                     # à fournir
