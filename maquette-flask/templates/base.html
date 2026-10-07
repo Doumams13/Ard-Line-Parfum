@@ -85,7 +85,7 @@
   <div class="drawer-head"><h2>Votre panier <span class="muted cart-count-txt">(0)</span></h2><button class="ib" type="button" data-close="drawer" aria-label="Fermer le panier">{{ icon("close") }}</button></div>
   <div class="drawer-body" data-cart-list></div>
   <div class="drawer-foot">
-    <div class="sum"><div><span>Sous-total</span>{{ ph("Montant") }}</div><div><span>Livraison</span><span class="muted">Calculée à l'étape suivante</span></div></div>
+    <div class="sum"><div><span>Sous-total</span><span data-subtotal>{{ ph("Montant") }}</span></div><div><span>Livraison</span><span class="muted">Calculée à l'étape suivante</span></div></div>
     <a class="btn full" href="{{ url_for('checkout') }}">Commander</a>
     <a class="wa-link" href="{{ url_for('contact') }}">ou commander sur WhatsApp</a>
   </div>

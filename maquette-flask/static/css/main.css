@@ -255,6 +255,8 @@ body.no-anno .anno{display:none}
 .why{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .why > div{padding:44px 32px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:14px;align-items:flex-start}
 .why > div:last-child{border-right:0}
+.why.why-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.essence-tx .lead{font-family:var(--display);font-size:clamp(22px,2vw,28px);line-height:1.3}
 .why h4{font-size:14px;letter-spacing:.2em;text-transform:uppercase;font-weight:500}
 .why p{font-size:15px;color:var(--pierre)}
 
@@ -274,9 +276,14 @@ body.no-anno .anno{display:none}
 /* 10 Final */
 .final{position:relative;min-height:clamp(480px,50vw,720px);overflow:hidden;background:var(--mousse);color:var(--ivoire);display:grid;place-items:center;text-align:center;padding:64px var(--gutter)}
 .final > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42;mix-blend-mode:luminosity}
+.final::after{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(60% 70% at 50% 50%,rgba(17,24,19,.82),rgba(17,24,19,.35) 75%)}
 .final-tx{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:28px}
 .final .eyebrow{color:var(--champagne-clair)}
 .final .h-l{font-size:clamp(44px,5.8vw,84px)}
+.promise{font-family:var(--display);font-size:clamp(28px,3.4vw,50px);line-height:1.15;max-width:22ch;text-wrap:balance;margin:0}
+.promise em{color:var(--champagne-clair)}
+.final .sig{color:var(--champagne-clair);font-size:18px}
+.promise{text-shadow:0 2px 24px rgba(17,24,19,.8)}
 
 /* Footer */
 .ftr{background:var(--encre);color:rgba(244,239,230,.82);padding:clamp(56px,7vw,100px) var(--gutter) 40px}
@@ -317,6 +324,7 @@ body.no-anno .anno{display:none}
 .line-item{display:grid;grid-template-columns:72px 1fr auto;gap:16px;align-items:start}
 .line-item img{width:72px;height:96px;object-fit:cover;background:var(--creme)}
 .line-item .pname{font-size:22px}
+.line-item .li-price{white-space:nowrap;font-variant-numeric:tabular-nums}
 .line-item .ctrl{display:flex;gap:14px;align-items:center;margin-top:10px}
 .remove{font-size:12px;text-decoration:underline;color:var(--pierre)}
 .empty{display:flex;flex-direction:column;gap:16px;align-items:flex-start;padding:20px 0}
@@ -603,4 +611,18 @@ body.no-anno .anno{display:none}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
+}
+
+/* « Pourquoi ARD LINE » en trois colonnes (textes de la marque) */
+@media (max-width:1100px){
+  .why.why-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .why.why-3 > div{border-bottom:0;border-right:1px solid var(--line);padding:36px 24px}
+  .why.why-3 > div:last-child{border-right:0}
+}
+@media (max-width:760px){
+  .why.why-3{grid-template-columns:1fr}
+  .why.why-3 > div{border-right:0;border-bottom:1px solid var(--line);padding:28px 4px}
+  .why.why-3 > div:last-child{border-bottom:0}
+  .why.why-3 h4{font-size:12px}
+  .why.why-3 p{font-size:15px}
 }

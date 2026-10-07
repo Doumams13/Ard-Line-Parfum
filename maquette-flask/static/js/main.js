@@ -11,6 +11,7 @@
   var img = function (path) { return window.ARD_STATIC + path; };
   var productUrl = function (slug) { return window.ARD_PRODUCT_URL.replace("__slug__", slug); };
   var PH = function (label) { return '<span class="ph">[' + label + "]</span>"; };
+  var money = function (n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0") + "\u00a0FCFA"; };
 
   var store = {
     get: function (k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
@@ -45,6 +46,9 @@
     var count = cart.reduce(function (n, l) { return n + l.qty; }, 0);
     $$(".cart-count").forEach(function (c) { c.textContent = count; });
     $$(".cart-count-txt").forEach(function (c) { c.textContent = "(" + count + ")"; });
+    var subtotal = cart.reduce(function (n, l) { var p = bySlug[l.slug]; return n + (p && p.price ? p.price * l.qty : 0); }, 0);
+    $$("[data-subtotal]").forEach(function (el) { el.textContent = money(subtotal); });
+    $$("[data-total]").forEach(function (el) { el.innerHTML = money(subtotal) + ' <small class="muted">+ livraison</small>'; });
     $$("[data-cart-list]").forEach(function (box) {
       var ro = box.hasAttribute("data-readonly");
       if (!cart.length) {
@@ -59,7 +63,7 @@
         var ctrl = ro
           ? '<p class="muted small">Quantité ' + l.qty + "</p>"
           : '<div class="ctrl"><div class="stepper sm"><button type="button" data-qty="' + p.slug + '" data-d="-1" aria-label="Moins">−</button><output>' + l.qty + '</output><button type="button" data-qty="' + p.slug + '" data-d="1" aria-label="Plus">+</button></div><button type="button" class="remove" data-remove="' + p.slug + '">Retirer</button></div>';
-        return '<div class="line-item"><a href="' + productUrl(p.slug) + '"><img src="' + img(p.studio) + '" alt="' + p.name + '"></a><div><a class="pname" href="' + productUrl(p.slug) + '" style="text-decoration:none">' + p.name + '</a><p class="muted small">' + p.type + " · " + p.volume + "</p>" + ctrl + "</div>" + PH("Prix") + "</div>";
+        return '<div class="line-item"><a href="' + productUrl(p.slug) + '"><img src="' + img(p.studio) + '" alt="' + p.name + '"></a><div><a class="pname" href="' + productUrl(p.slug) + '" style="text-decoration:none">' + p.name + '</a><p class="muted small">' + p.type + " · " + p.volume + "</p>" + ctrl + "</div>" + (p.price ? '<span class="li-price">' + money(p.price * l.qty) + "</span>" : PH("Prix")) + "</div>";
       }).join("");
     });
   }

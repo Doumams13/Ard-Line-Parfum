@@ -40,8 +40,7 @@
     <h3 class="pname"><a href="{{ url_for('product', slug=p.slug) }}">{{ p.name }}</a></h3>
     <span class="ptype">{{ p.type }} · {{ p.volume }}</span>
     <div class="card-row">
-      {{ val(p.price, "Prix") }}
-      <span class="avail"><i class="dot"></i>{{ val(p.availability, "Dispo") }}</span>
+      {{ val(p.price_label, "Prix") }}
     </div>
   </div>
 </article>

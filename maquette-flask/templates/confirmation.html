@@ -8,7 +8,7 @@
   <p class="muted">Commande n° {{ ph("ARD-0000") }}. Un récapitulatif vous a été envoyé par {{ ph("email / WhatsApp") }}.</p>
   <img class="confirm-img" src="{{ url_for('static', filename='images/studio-collection.jpg') }}" alt="">
   <div data-cart-list data-readonly data-confirm></div>
-  <div class="sum"><div class="tot"><span>Total</span>{{ ph("Montant") }}</div></div>
+  <div class="sum"><div class="tot"><span>Total</span><span data-total>{{ ph("Montant") }}</span></div></div>
   <div class="row-btns center"><a class="btn" href="{{ url_for('account') }}">Suivre ma commande</a><a class="btn ghost" href="{{ url_for('collection') }}">Retour à la collection</a></div>
   <p class="muted small">Créer un compte vous permettra de retrouver vos commandes. <a href="{{ url_for('account') }}">Créer mon compte</a></p>
 </section>

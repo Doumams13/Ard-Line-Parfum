@@ -45,7 +45,7 @@
   <aside class="co-side">
     <h2 class="h-s">Récapitulatif</h2>
     <div data-cart-list data-readonly></div>
-    <div class="sum"><div><span>Sous-total</span>{{ ph("Montant") }}</div><div><span>Livraison · <span data-city>Dakar</span></span>{{ ph("Frais") }}</div><div class="tot"><span>Total</span>{{ ph("Montant") }}</div></div>
+    <div class="sum"><div><span>Sous-total</span><span data-subtotal>{{ ph("Montant") }}</span></div><div><span>Livraison · <span data-city>Dakar</span></span>{{ ph("Frais") }}</div><div class="tot"><span>Total</span><span data-total>{{ ph("Montant") }}</span></div></div>
     <p class="muted small">Une question ? WhatsApp {{ ph("numéro") }}</p>
     {% call anno("Devise") %}Dakar (XOF) et Libreville / Port-Gentil (XAF) n'utilisent pas le même franc CFA. Afficher la devise selon le pays de livraison.{% endcall %}
   </aside>

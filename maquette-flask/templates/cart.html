@@ -7,7 +7,7 @@
   <div class="cart-layout">
     <div data-cart-list class="cart-list"></div>
     <aside class="cart-sum">
-      <div class="sum"><div><span>Sous-total</span>{{ ph("Montant") }}</div><div><span>Livraison</span><span class="muted">Étape suivante</span></div><div class="tot"><span>Total</span>{{ ph("Montant") }}</div></div>
+      <div class="sum"><div><span>Sous-total</span><span data-subtotal>{{ ph("Montant") }}</span></div><div><span>Livraison</span><span class="muted">Étape suivante</span></div><div class="tot"><span>Total</span><span data-total>{{ ph("Montant") }}</span></div></div>
       <div class="note-box">{{ icon("truck") }}<span>Livraison {{ ph("conditions à définir") }}</span></div>
       <a class="btn full" href="{{ url_for('checkout') }}">Commander</a>
       <a class="wa-link" href="{{ url_for('contact') }}">ou commander sur WhatsApp</a>
